@@ -12,26 +12,6 @@
       "outbound": "DIRECT"
     },
     {
-      "type": "DOMAIN",
-      "value": "www.mtyy1.com",
-      "outbound": "DIRECT"
-    },
-    {
-      "type": "DOMAIN-SUFFIX",
-      "value": "mtyy1.com",
-      "outbound": "DIRECT"
-    },
-    {
-      "type": "DOMAIN",
-      "value": "www.mty1.com",
-      "outbound": "DIRECT"
-    },
-    {
-      "type": "DOMAIN-SUFFIX",
-      "value": "mty1.com",
-      "outbound": "DIRECT"
-    },
-    {
       "type": "DOMAIN-KEYWORD",
       "value": "mtyy",
       "outbound": "DIRECT"

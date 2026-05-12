@@ -90,4 +90,4 @@ surge_policy_map:
 
 注意：这里用 `behavior: classical`，因为规则源里包含 domain/ip/port/rule-set 等混合类型。
 
-当前启用规则数：73。
+当前启用规则数：69。

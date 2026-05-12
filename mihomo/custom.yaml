@@ -4,10 +4,6 @@
 payload:
   - "DOMAIN,cc0cd.cc.cd,DIRECT"
   - "DOMAIN-SUFFIX,cc0cd.cc.cd,DIRECT"
-  - "DOMAIN,www.mtyy1.com,DIRECT"
-  - "DOMAIN-SUFFIX,mtyy1.com,DIRECT"
-  - "DOMAIN,www.mty1.com,DIRECT"
-  - "DOMAIN-SUFFIX,mty1.com,DIRECT"
   - "DOMAIN-KEYWORD,mtyy,DIRECT"
   - "DOMAIN-KEYWORD,mt,DIRECT"
   - "DOMAIN-SUFFIX,m.kuku.lu,SF3"
