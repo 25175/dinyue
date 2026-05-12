@@ -33,7 +33,10 @@ BUILTIN_POLICIES = {'DIRECT', 'REJECT', 'REJECT-DROP', 'REJECT-TINYGIF', 'Proxy'
 # commonly supported match-only rule types in remote split lists. Port rules,
 # nested RULE-SET references, process rules, etc. are emitted as inline rules for
 # manual copy instead of breaking the whole external rule-set parse.
-SURGE_REMOTE_RULE_TYPES = {'DOMAIN', 'DOMAIN-SUFFIX', 'DOMAIN-KEYWORD', 'IP-CIDR', 'IP-CIDR6', 'GEOIP'}
+# Keep DOMAIN-KEYWORD inline for Surge. Some Surge versions/configs are picky
+# about DOMAIN-KEYWORD inside external rule-set files; inline [Rule] form is safer
+# for important keyword rules such as mtyy/mt.
+SURGE_REMOTE_RULE_TYPES = {'DOMAIN', 'DOMAIN-SUFFIX', 'IP-CIDR', 'IP-CIDR6', 'GEOIP'}
 
 
 def fail(message):

@@ -3,8 +3,6 @@
 
 DOMAIN,cc0cd.cc.cd
 DOMAIN-SUFFIX,cc0cd.cc.cd
-DOMAIN-KEYWORD,mtyy
-DOMAIN-KEYWORD,mt
 IP-CIDR,23.27.240.115/32
 DOMAIN,www.gstatic.com
 DOMAIN,cp.cloudflare.com
@@ -17,18 +15,11 @@ IP-CIDR,15.235.231.178/32,no-resolve
 IP-CIDR,15.235.231.196/32,no-resolve
 IP-CIDR,149.52.110.74/32,no-resolve
 DOMAIN,agentseller.temu
-DOMAIN-KEYWORD,seller
 DOMAIN,agentseller.temu.com
 DOMAIN,seller.temu.com
-DOMAIN-KEYWORD,17qcc.com
-DOMAIN-KEYWORD,v6.navy
 DOMAIN,v6.navy
-DOMAIN-KEYWORD,dynv6
 DOMAIN,dynv6
-DOMAIN-KEYWORD,navy
 DOMAIN,navy
-DOMAIN-KEYWORD,keke1.app,no-resolve
-DOMAIN-KEYWORD,iPv6,no-resolve
 DOMAIN-SUFFIX,ls.apple.com,no-resolve
 IP-CIDR,0.0.0.0/8,no-resolve
 IP-CIDR,10.0.0.0/8,no-resolve
@@ -42,6 +33,4 @@ IP-CIDR6,::1/128,no-resolve
 IP-CIDR6,fc00::/7,no-resolve
 IP-CIDR6,fe80::/10,no-resolve
 IP-CIDR6,fd00::/8,no-resolve
-DOMAIN-KEYWORD,clipber
 DOMAIN,hd.lz-cdn18.com
-DOMAIN-KEYWORD,333ys.tv
