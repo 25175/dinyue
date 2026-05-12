@@ -70,6 +70,10 @@ surge_policy_map:
 rules:
   - {type: DOMAIN, value: cc0cd.cc.cd, policy: DIRECT, comment: "Cloudflare Tunnel 主域名直连"}
   - {type: DOMAIN-SUFFIX, value: cc0cd.cc.cd, policy: DIRECT, comment: "Cloudflare Tunnel 子域名直连"}
+  - {type: DOMAIN, value: www.mtyy1.com, policy: DIRECT, comment: "麦田精确域名，供 Surge 远程 direct.list 命中"}
+  - {type: DOMAIN-SUFFIX, value: mtyy1.com, policy: DIRECT, comment: "麦田主域名及子域名直连"}
+  - {type: DOMAIN, value: www.mty1.com, policy: DIRECT, comment: "麦田备用/跳转域名，供 Surge 远程 direct.list 命中"}
+  - {type: DOMAIN-SUFFIX, value: mty1.com, policy: DIRECT, comment: "麦田备用/跳转域名及子域名直连"}
   - {type: DOMAIN-KEYWORD, value: mtyy, policy: DIRECT}
   - {type: DOMAIN-KEYWORD, value: mt, policy: DIRECT}
   - {type: DOMAIN-SUFFIX, value: m.kuku.lu, policy: SF3}

@@ -3,6 +3,10 @@
 
 DOMAIN,cc0cd.cc.cd
 DOMAIN-SUFFIX,cc0cd.cc.cd
+DOMAIN,www.mtyy1.com
+DOMAIN-SUFFIX,mtyy1.com
+DOMAIN,www.mty1.com
+DOMAIN-SUFFIX,mty1.com
 IP-CIDR,23.27.240.115/32
 DOMAIN,www.gstatic.com
 DOMAIN,cp.cloudflare.com

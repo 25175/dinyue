@@ -49,7 +49,7 @@ https://raw.githubusercontent.com/25175/dinyue/main/surge/rule-set-lines.conf
 
 ## Surge 接入：`/Users/ha/Downloads/Surge.surgeconfig`
 
-推荐复制 `surge/rule-set-lines.conf` 里的规则到 `[Rule]` 靠前位置，例如：
+推荐复制 `surge/rule-set-lines.conf` 里的几条远程规则到 `[Rule]` 靠前位置即可，不需要把所有域名一条条写进 Surge，例如：
 
 ```text
 RULE-SET,https://raw.githubusercontent.com/25175/dinyue/main/surge/split/direct.list,DIRECT
@@ -90,4 +90,4 @@ surge_policy_map:
 
 注意：这里用 `behavior: classical`，因为规则源里包含 domain/ip/port/rule-set 等混合类型。
 
-当前启用规则数：69。
+当前启用规则数：73。
