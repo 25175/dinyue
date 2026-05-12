@@ -1,12 +1,11 @@
 # Surge split rules for policy: DIRECT
-# 源数据：xiugai.yaml；本文件只保留匹配条件，不带策略列，供 RULE-SET,URL,策略 使用
+# 源数据：xiugai.yaml；本文件只保留 Surge 外部 RULE-SET 兼容的匹配条件，不带策略列。
 
 DOMAIN,cc0cd.cc.cd
 DOMAIN-SUFFIX,cc0cd.cc.cd
 DOMAIN-KEYWORD,mtyy
 DOMAIN-KEYWORD,mt
 IP-CIDR,23.27.240.115/32
-DST-PORT,22
 DOMAIN,www.gstatic.com
 DOMAIN,cp.cloudflare.com
 DOMAIN,accel.ipflygates.com

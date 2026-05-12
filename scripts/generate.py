@@ -29,6 +29,12 @@ DEFAULT_SURGE_POLICY_MAP = {
 
 BUILTIN_POLICIES = {'DIRECT', 'REJECT', 'REJECT-DROP', 'REJECT-TINYGIF', 'Proxy'}
 
+# Surge external RULE-SET files are stricter than normal [Rule] lines. Keep only
+# commonly supported match-only rule types in remote split lists. Port rules,
+# nested RULE-SET references, process rules, etc. are emitted as inline rules for
+# manual copy instead of breaking the whole external rule-set parse.
+SURGE_REMOTE_RULE_TYPES = {'DOMAIN', 'DOMAIN-SUFFIX', 'DOMAIN-KEYWORD', 'IP-CIDR', 'IP-CIDR6', 'GEOIP'}
+
 
 def fail(message):
     print(f'ERROR: {message}', file=sys.stderr)
@@ -183,21 +189,37 @@ def main():
     for old in split_dir.glob('*.list'):
         old.unlink()
     surge_rule_set_lines = []
+    surge_inline_lines = []
     for policy, bucket in surge_buckets.items():
-        filename = safe_filename(policy) + '.list'
-        split_lines = [
-            f'# Surge split rules for policy: {policy}',
-            '# 源数据：xiugai.yaml；本文件只保留匹配条件，不带策略列，供 RULE-SET,URL,策略 使用',
-            '',
-        ]
-        split_lines.extend(rule_line(r, include_policy=False) for r in bucket)
-        split_lines.append('')
-        write(split_dir / filename, '\n'.join(split_lines))
-        surge_rule_set_lines.append(f'RULE-SET,https://raw.githubusercontent.com/25175/dinyue/main/surge/split/{filename},{policy}')
+        remote_rules = [r for r in bucket if r['type'] in SURGE_REMOTE_RULE_TYPES]
+        inline_rules = [r for r in bucket if r['type'] not in SURGE_REMOTE_RULE_TYPES]
+
+        if remote_rules:
+            filename = safe_filename(policy) + '.list'
+            split_lines = [
+                f'# Surge split rules for policy: {policy}',
+                '# 源数据：xiugai.yaml；本文件只保留 Surge 外部 RULE-SET 兼容的匹配条件，不带策略列。',
+                '',
+            ]
+            split_lines.extend(rule_line(r, include_policy=False) for r in remote_rules)
+            split_lines.append('')
+            write(split_dir / filename, '\n'.join(split_lines))
+            surge_rule_set_lines.append(f'RULE-SET,https://raw.githubusercontent.com/25175/dinyue/main/surge/split/{filename},{policy}')
+
+        for r in inline_rules:
+            surge_inline_lines.append(rule_line(r, policy=policy))
+
+    write(ROOT / 'surge' / 'inline-rules.conf', '\n'.join([
+        '# 这些规则类型不适合放进 Surge 外部 RULE-SET，需直接复制到 [Rule]。',
+        '# 例如 DST-PORT、嵌套 RULE-SET 等。',
+        *surge_inline_lines,
+        '',
+    ]))
 
     write(ROOT / 'surge' / 'rule-set-lines.conf', '\n'.join([
         '# 复制下面这些行到 Surge [Rule] 靠前位置。',
         '# 每个远程 RULE-SET 已按当前 Surge 策略组拆分，自适应匹配，不会引用不存在的 Clash 策略名。',
+        '# 如果 surge/inline-rules.conf 非空，也请把其中规则复制到这些 RULE-SET 前面。',
         *surge_rule_set_lines,
         '',
     ]))
