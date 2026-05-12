@@ -1,0 +1,14 @@
+# Surge split rules for policy: REJECT
+# 源数据：xiugai.yaml；本文件只保留匹配条件，不带策略列，供 RULE-SET,URL,策略 使用
+
+RULE-SET,adblock
+DOMAIN,www.hostbuf.com
+DOMAIN,backup.www.hostbuf.com
+DOMAIN,www.youtusoft.com
+DOMAIN,youtusoft.com
+DOMAIN,hostbuf.com
+DOMAIN,dkys.org
+DOMAIN,tcpspeed.com
+DOMAIN,www.wn1998.com
+DOMAIN,wn1998.com
+DOMAIN,pwlt.wn1998.com

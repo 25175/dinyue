@@ -11,9 +11,8 @@
 #
 # 推荐引用地址：
 #   Surge：
-#     RULE-SET,https://raw.githubusercontent.com/25175/dinyue/main/surge/custom.list,Proxy
-#     注意：Surge 远程 RULE-SET 命中后会使用这里最后的统一策略 Proxy；如果要保留每条规则自己的
-#     DIRECT/REJECT/Proxy，请把生成的 surge/custom.list 规则行复制进 [Rule]，或按策略拆多个远程列表。
+#     复制 surge/rule-set-lines.conf 里的多条 RULE-SET 到 [Rule] 靠前位置。
+#     脚本会按 surge_policy_map 自动把 Clash/Mihomo 策略名映射到当前 Surge 策略组，并拆分成多个远程列表。
 #
 #   Clash/Mihomo：先在 rule-providers 增加：
 #     dinyue-custom:
@@ -59,7 +58,14 @@
 comments:
   - "# 自定义规则：源数据由 xiugai.yaml 维护"
   - "# 修改后运行：python3 scripts/generate.py；或在 GitHub 网页直接改 xiugai.yaml 触发 Actions 自动生成"
-  - "# 输出同时兼容 Surge custom.list 与 Clash/Mihomo rule-provider payload"
+  - "# Clash/Mihomo 保留原 policy；Surge 会按 surge_policy_map 自动映射并拆分"
+
+# Surge 策略组映射：左边是 xiugai.yaml 里写的 policy，右边是当前 Surge [Proxy Group] 里存在的策略。
+# 你的 Surge 当前没有 SF3 / 🎯 全球直连 / 👋 手动选择，所以这里自动转成 Proxy / DIRECT。
+surge_policy_map:
+  "🎯 全球直连": DIRECT
+  "👋 手动选择": Proxy
+  SF3: Proxy
 
 rules:
   - {type: DOMAIN, value: cc0cd.cc.cd, policy: DIRECT, comment: "Cloudflare Tunnel 主域名直连"}

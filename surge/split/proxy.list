@@ -1,0 +1,16 @@
+# Surge split rules for policy: Proxy
+# 源数据：xiugai.yaml；本文件只保留匹配条件，不带策略列，供 RULE-SET,URL,策略 使用
+
+DOMAIN-SUFFIX,m.kuku.lu
+DOMAIN-SUFFIX,kuku.lu
+DOMAIN-KEYWORD,kuku
+DOMAIN,netcut.cn
+DOMAIN,wenshushu.cn
+DOMAIN,wenshushu.com
+DOMAIN,mypikpak.com
+DOMAIN,access.mypikpak.com
+DOMAIN,api-drive.mypikpak.com
+DOMAIN,config.mypikpak.com
+DOMAIN,static.mypikpak.com
+DOMAIN,user.mypikpak.com
+DOMAIN-KEYWORD,afreecatv.com

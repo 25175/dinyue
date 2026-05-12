@@ -1,17 +1,14 @@
-# 自定义规则：源数据由 xiugai.yaml 维护
-# 修改后运行：python3 scripts/generate.py；或在 GitHub 网页直接改 xiugai.yaml 触发 Actions 自动生成
-# 输出同时兼容 Surge custom.list 与 Clash/Mihomo rule-provider payload
+# Surge 汇总规则：源数据由 xiugai.yaml 维护
+# 已按 surge_policy_map 把 Clash/Mihomo 策略名映射为当前 Surge 策略组
+# 如果直接复制本文件到 [Rule]，每行末尾策略会生效；如果用远程 RULE-SET，建议使用 split/ 下的按策略拆分文件。
 
+# policy: DIRECT
 DOMAIN,cc0cd.cc.cd,DIRECT
 DOMAIN-SUFFIX,cc0cd.cc.cd,DIRECT
 DOMAIN-KEYWORD,mtyy,DIRECT
 DOMAIN-KEYWORD,mt,DIRECT
-DOMAIN-SUFFIX,m.kuku.lu,SF3
-DOMAIN-SUFFIX,kuku.lu,SF3
-DOMAIN-KEYWORD,kuku,SF3
 IP-CIDR,23.27.240.115/32,DIRECT
 DST-PORT,22,DIRECT
-RULE-SET,adblock,REJECT
 DOMAIN,www.gstatic.com,DIRECT
 DOMAIN,cp.cloudflare.com,DIRECT
 DOMAIN,accel.ipflygates.com,DIRECT
@@ -22,6 +19,53 @@ IP-CIDR,15.235.228.46/32,DIRECT,no-resolve
 IP-CIDR,15.235.231.178/32,DIRECT,no-resolve
 IP-CIDR,15.235.231.196/32,DIRECT,no-resolve
 IP-CIDR,149.52.110.74/32,DIRECT,no-resolve
+DOMAIN,agentseller.temu,DIRECT
+DOMAIN-KEYWORD,seller,DIRECT
+DOMAIN,agentseller.temu.com,DIRECT
+DOMAIN,seller.temu.com,DIRECT
+DOMAIN-KEYWORD,17qcc.com,DIRECT
+DOMAIN-KEYWORD,v6.navy,DIRECT
+DOMAIN,v6.navy,DIRECT
+DOMAIN-KEYWORD,dynv6,DIRECT
+DOMAIN,dynv6,DIRECT
+DOMAIN-KEYWORD,navy,DIRECT
+DOMAIN,navy,DIRECT
+DOMAIN-KEYWORD,keke1.app,DIRECT,no-resolve
+DOMAIN-KEYWORD,iPv6,DIRECT,no-resolve
+DOMAIN-SUFFIX,ls.apple.com,DIRECT,no-resolve
+IP-CIDR,0.0.0.0/8,DIRECT,no-resolve
+IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+IP-CIDR,100.64.0.0/10,DIRECT,no-resolve
+IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+IP-CIDR,198.18.0.0/16,DIRECT,no-resolve
+IP-CIDR,224.0.0.0/4,DIRECT,no-resolve
+IP-CIDR6,::1/128,DIRECT,no-resolve
+IP-CIDR6,fc00::/7,DIRECT,no-resolve
+IP-CIDR6,fe80::/10,DIRECT,no-resolve
+IP-CIDR6,fd00::/8,DIRECT,no-resolve
+DOMAIN-KEYWORD,clipber,DIRECT
+DOMAIN,hd.lz-cdn18.com,DIRECT
+DOMAIN-KEYWORD,333ys.tv,DIRECT
+
+# policy: Proxy
+DOMAIN-SUFFIX,m.kuku.lu,Proxy
+DOMAIN-SUFFIX,kuku.lu,Proxy
+DOMAIN-KEYWORD,kuku,Proxy
+DOMAIN,netcut.cn,Proxy
+DOMAIN,wenshushu.cn,Proxy
+DOMAIN,wenshushu.com,Proxy
+DOMAIN,mypikpak.com,Proxy
+DOMAIN,access.mypikpak.com,Proxy
+DOMAIN,api-drive.mypikpak.com,Proxy
+DOMAIN,config.mypikpak.com,Proxy
+DOMAIN,static.mypikpak.com,Proxy
+DOMAIN,user.mypikpak.com,Proxy
+DOMAIN-KEYWORD,afreecatv.com,Proxy
+
+# policy: REJECT
+RULE-SET,adblock,REJECT
 DOMAIN,www.hostbuf.com,REJECT
 DOMAIN,backup.www.hostbuf.com,REJECT
 DOMAIN,www.youtusoft.com,REJECT
@@ -32,42 +76,3 @@ DOMAIN,tcpspeed.com,REJECT
 DOMAIN,www.wn1998.com,REJECT
 DOMAIN,wn1998.com,REJECT
 DOMAIN,pwlt.wn1998.com,REJECT
-DOMAIN,agentseller.temu,🎯 全球直连
-DOMAIN-KEYWORD,seller,🎯 全球直连
-DOMAIN,agentseller.temu.com,🎯 全球直连
-DOMAIN,seller.temu.com,🎯 全球直连
-DOMAIN,netcut.cn,👋 手动选择
-DOMAIN,wenshushu.cn,👋 手动选择
-DOMAIN,wenshushu.com,👋 手动选择
-DOMAIN,mypikpak.com,👋 手动选择
-DOMAIN,access.mypikpak.com,👋 手动选择
-DOMAIN,api-drive.mypikpak.com,👋 手动选择
-DOMAIN,config.mypikpak.com,👋 手动选择
-DOMAIN,static.mypikpak.com,👋 手动选择
-DOMAIN,user.mypikpak.com,👋 手动选择
-DOMAIN-KEYWORD,17qcc.com,🎯 全球直连
-DOMAIN-KEYWORD,v6.navy,🎯 全球直连
-DOMAIN,v6.navy,🎯 全球直连
-DOMAIN-KEYWORD,dynv6,🎯 全球直连
-DOMAIN,dynv6,🎯 全球直连
-DOMAIN-KEYWORD,navy,🎯 全球直连
-DOMAIN,navy,🎯 全球直连
-DOMAIN-KEYWORD,keke1.app,🎯 全球直连,no-resolve
-DOMAIN-KEYWORD,iPv6,🎯 全球直连,no-resolve
-DOMAIN-SUFFIX,ls.apple.com,🎯 全球直连,no-resolve
-IP-CIDR,0.0.0.0/8,🎯 全球直连,no-resolve
-IP-CIDR,10.0.0.0/8,🎯 全球直连,no-resolve
-IP-CIDR,100.64.0.0/10,🎯 全球直连,no-resolve
-IP-CIDR,127.0.0.0/8,🎯 全球直连,no-resolve
-IP-CIDR,172.16.0.0/12,🎯 全球直连,no-resolve
-IP-CIDR,192.168.0.0/16,🎯 全球直连,no-resolve
-IP-CIDR,198.18.0.0/16,🎯 全球直连,no-resolve
-IP-CIDR,224.0.0.0/4,🎯 全球直连,no-resolve
-IP-CIDR6,::1/128,🎯 全球直连,no-resolve
-IP-CIDR6,fc00::/7,🎯 全球直连,no-resolve
-IP-CIDR6,fe80::/10,🎯 全球直连,no-resolve
-IP-CIDR6,fd00::/8,🎯 全球直连,no-resolve
-DOMAIN-KEYWORD,clipber,🎯 全球直连
-DOMAIN,hd.lz-cdn18.com,🎯 全球直连
-DOMAIN-KEYWORD,333ys.tv,🎯 全球直连
-DOMAIN-KEYWORD,afreecatv.com,👋 手动选择

@@ -1,6 +1,6 @@
 # 自定义规则：源数据由 xiugai.yaml 维护
 # 修改后运行：python3 scripts/generate.py；或在 GitHub 网页直接改 xiugai.yaml 触发 Actions 自动生成
-# 输出同时兼容 Surge custom.list 与 Clash/Mihomo rule-provider payload
+# Clash/Mihomo 保留原 policy；Surge 会按 surge_policy_map 自动映射并拆分
 
 DOMAIN,cc0cd.cc.cd,DIRECT
 DOMAIN-SUFFIX,cc0cd.cc.cd,DIRECT

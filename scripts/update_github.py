@@ -55,16 +55,23 @@ def validate_outputs() -> int:
     payload = clash.get("payload")
     if not isinstance(payload, list) or not payload:
         raise SystemExit("clash/custom.yaml 缺少 payload 规则")
-    surge_lines = [
-        line for line in (ROOT / "surge/custom.list").read_text(encoding="utf-8").splitlines()
-        if line and not line.startswith("#")
-    ]
     rules_lines = [
         line for line in (ROOT / "rules/custom.list").read_text(encoding="utf-8").splitlines()
         if line and not line.startswith("#")
     ]
-    if surge_lines != rules_lines or surge_lines != payload:
-        raise SystemExit("生成文件不一致：surge/custom.list、rules/custom.list、clash payload 应相同")
+    if rules_lines != payload:
+        raise SystemExit("生成文件不一致：rules/custom.list 和 clash payload 应相同")
+
+    surge_summary = ROOT / "surge/custom.list"
+    surge_rule_sets = ROOT / "surge/rule-set-lines.conf"
+    split_dir = ROOT / "surge/split"
+    if not surge_summary.exists() or not surge_rule_sets.exists() or not split_dir.is_dir():
+        raise SystemExit("Surge 生成文件缺失：需要 surge/custom.list、surge/rule-set-lines.conf、surge/split/")
+    if "RULE-SET," not in surge_rule_sets.read_text(encoding="utf-8"):
+        raise SystemExit("surge/rule-set-lines.conf 缺少 RULE-SET 行")
+    if not list(split_dir.glob("*.list")):
+        raise SystemExit("surge/split/ 没有生成按策略拆分的 list 文件")
+
     json.loads((ROOT / "sing-box/custom-source.json").read_text(encoding="utf-8"))
     return len(payload)
 

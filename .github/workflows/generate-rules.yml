@@ -55,12 +55,16 @@ jobs:
           assert clash == mihomo, 'clash/custom.yaml and mihomo/custom.yaml must be identical'
           assert isinstance(clash.get('payload'), list) and clash['payload'], 'clash payload must be non-empty'
 
-          surge_lines = [line for line in (root / 'surge/custom.list').read_text(encoding='utf-8').splitlines() if line and not line.startswith('#')]
           rules_lines = [line for line in (root / 'rules/custom.list').read_text(encoding='utf-8').splitlines() if line and not line.startswith('#')]
-          assert surge_lines == rules_lines == clash['payload'], 'generated list/payload files are inconsistent'
+          assert rules_lines == clash['payload'], 'rules/custom.list and clash payload are inconsistent'
+
+          assert (root / 'surge/custom.list').exists(), 'missing surge/custom.list'
+          assert (root / 'surge/rule-set-lines.conf').exists(), 'missing surge/rule-set-lines.conf'
+          assert list((root / 'surge/split').glob('*.list')), 'missing surge split list files'
+          assert 'RULE-SET,' in (root / 'surge/rule-set-lines.conf').read_text(encoding='utf-8'), 'missing Surge RULE-SET lines'
 
           json.loads((root / 'sing-box/custom-source.json').read_text(encoding='utf-8'))
-          print(f'validated {len(surge_lines)} rules')
+          print(f'validated {len(rules_lines)} rules')
           PY
 
       - name: Commit generated files
