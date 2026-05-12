@@ -1,0 +1,372 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "type": "DOMAIN",
+      "value": "cc0cd.cc.cd",
+      "outbound": "DIRECT"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "cc0cd.cc.cd",
+      "outbound": "DIRECT"
+    },
+    {
+      "type": "DOMAIN-KEYWORD",
+      "value": "mtyy",
+      "outbound": "DIRECT"
+    },
+    {
+      "type": "DOMAIN-KEYWORD",
+      "value": "mt",
+      "outbound": "DIRECT"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "m.kuku.lu",
+      "outbound": "SF3"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "kuku.lu",
+      "outbound": "SF3"
+    },
+    {
+      "type": "DOMAIN-KEYWORD",
+      "value": "kuku",
+      "outbound": "SF3"
+    },
+    {
+      "type": "IP-CIDR",
+      "value": "23.27.240.115/32",
+      "outbound": "DIRECT"
+    },
+    {
+      "type": "DST-PORT",
+      "value": "22",
+      "outbound": "DIRECT"
+    },
+    {
+      "type": "RULE-SET",
+      "value": "adblock",
+      "outbound": "REJECT"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "www.gstatic.com",
+      "outbound": "DIRECT"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "cp.cloudflare.com",
+      "outbound": "DIRECT"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "accel.ipflygates.com",
+      "outbound": "DIRECT"
+    },
+    {
+      "type": "IP-CIDR",
+      "value": "15.235.225.64/32",
+      "outbound": "DIRECT",
+      "option": "no-resolve"
+    },
+    {
+      "type": "IP-CIDR",
+      "value": "15.235.225.65/32",
+      "outbound": "DIRECT",
+      "option": "no-resolve"
+    },
+    {
+      "type": "IP-CIDR",
+      "value": "15.235.225.66/32",
+      "outbound": "DIRECT",
+      "option": "no-resolve"
+    },
+    {
+      "type": "IP-CIDR",
+      "value": "15.235.228.46/32",
+      "outbound": "DIRECT",
+      "option": "no-resolve"
+    },
+    {
+      "type": "IP-CIDR",
+      "value": "15.235.231.178/32",
+      "outbound": "DIRECT",
+      "option": "no-resolve"
+    },
+    {
+      "type": "IP-CIDR",
+      "value": "15.235.231.196/32",
+      "outbound": "DIRECT",
+      "option": "no-resolve"
+    },
+    {
+      "type": "IP-CIDR",
+      "value": "149.52.110.74/32",
+      "outbound": "DIRECT",
+      "option": "no-resolve"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "www.hostbuf.com",
+      "outbound": "REJECT"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "backup.www.hostbuf.com",
+      "outbound": "REJECT"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "www.youtusoft.com",
+      "outbound": "REJECT"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "youtusoft.com",
+      "outbound": "REJECT"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "hostbuf.com",
+      "outbound": "REJECT"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "dkys.org",
+      "outbound": "REJECT"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "tcpspeed.com",
+      "outbound": "REJECT"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "www.wn1998.com",
+      "outbound": "REJECT"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "wn1998.com",
+      "outbound": "REJECT"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "pwlt.wn1998.com",
+      "outbound": "REJECT"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "agentseller.temu",
+      "outbound": "🎯 全球直连"
+    },
+    {
+      "type": "DOMAIN-KEYWORD",
+      "value": "seller",
+      "outbound": "🎯 全球直连"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "agentseller.temu.com",
+      "outbound": "🎯 全球直连"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "seller.temu.com",
+      "outbound": "🎯 全球直连"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "netcut.cn",
+      "outbound": "👋 手动选择"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "wenshushu.cn",
+      "outbound": "👋 手动选择"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "wenshushu.com",
+      "outbound": "👋 手动选择"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "mypikpak.com",
+      "outbound": "👋 手动选择"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "access.mypikpak.com",
+      "outbound": "👋 手动选择"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "api-drive.mypikpak.com",
+      "outbound": "👋 手动选择"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "config.mypikpak.com",
+      "outbound": "👋 手动选择"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "static.mypikpak.com",
+      "outbound": "👋 手动选择"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "user.mypikpak.com",
+      "outbound": "👋 手动选择"
+    },
+    {
+      "type": "DOMAIN-KEYWORD",
+      "value": "17qcc.com",
+      "outbound": "🎯 全球直连"
+    },
+    {
+      "type": "DOMAIN-KEYWORD",
+      "value": "v6.navy",
+      "outbound": "🎯 全球直连"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "v6.navy",
+      "outbound": "🎯 全球直连"
+    },
+    {
+      "type": "DOMAIN-KEYWORD",
+      "value": "dynv6",
+      "outbound": "🎯 全球直连"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "dynv6",
+      "outbound": "🎯 全球直连"
+    },
+    {
+      "type": "DOMAIN-KEYWORD",
+      "value": "navy",
+      "outbound": "🎯 全球直连"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "navy",
+      "outbound": "🎯 全球直连"
+    },
+    {
+      "type": "DOMAIN-KEYWORD",
+      "value": "keke1.app",
+      "outbound": "🎯 全球直连",
+      "option": "no-resolve"
+    },
+    {
+      "type": "DOMAIN-KEYWORD",
+      "value": "iPv6",
+      "outbound": "🎯 全球直连",
+      "option": "no-resolve"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "ls.apple.com",
+      "outbound": "🎯 全球直连",
+      "option": "no-resolve"
+    },
+    {
+      "type": "IP-CIDR",
+      "value": "0.0.0.0/8",
+      "outbound": "🎯 全球直连",
+      "option": "no-resolve"
+    },
+    {
+      "type": "IP-CIDR",
+      "value": "10.0.0.0/8",
+      "outbound": "🎯 全球直连",
+      "option": "no-resolve"
+    },
+    {
+      "type": "IP-CIDR",
+      "value": "100.64.0.0/10",
+      "outbound": "🎯 全球直连",
+      "option": "no-resolve"
+    },
+    {
+      "type": "IP-CIDR",
+      "value": "127.0.0.0/8",
+      "outbound": "🎯 全球直连",
+      "option": "no-resolve"
+    },
+    {
+      "type": "IP-CIDR",
+      "value": "172.16.0.0/12",
+      "outbound": "🎯 全球直连",
+      "option": "no-resolve"
+    },
+    {
+      "type": "IP-CIDR",
+      "value": "192.168.0.0/16",
+      "outbound": "🎯 全球直连",
+      "option": "no-resolve"
+    },
+    {
+      "type": "IP-CIDR",
+      "value": "198.18.0.0/16",
+      "outbound": "🎯 全球直连",
+      "option": "no-resolve"
+    },
+    {
+      "type": "IP-CIDR",
+      "value": "224.0.0.0/4",
+      "outbound": "🎯 全球直连",
+      "option": "no-resolve"
+    },
+    {
+      "type": "IP-CIDR6",
+      "value": "::1/128",
+      "outbound": "🎯 全球直连",
+      "option": "no-resolve"
+    },
+    {
+      "type": "IP-CIDR6",
+      "value": "fc00::/7",
+      "outbound": "🎯 全球直连",
+      "option": "no-resolve"
+    },
+    {
+      "type": "IP-CIDR6",
+      "value": "fe80::/10",
+      "outbound": "🎯 全球直连",
+      "option": "no-resolve"
+    },
+    {
+      "type": "IP-CIDR6",
+      "value": "fd00::/8",
+      "outbound": "🎯 全球直连",
+      "option": "no-resolve"
+    },
+    {
+      "type": "DOMAIN-KEYWORD",
+      "value": "clipber",
+      "outbound": "🎯 全球直连"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "hd.lz-cdn18.com",
+      "outbound": "🎯 全球直连"
+    },
+    {
+      "type": "DOMAIN-KEYWORD",
+      "value": "333ys.tv",
+      "outbound": "🎯 全球直连"
+    },
+    {
+      "type": "DOMAIN-KEYWORD",
+      "value": "afreecatv.com",
+      "outbound": "👋 手动选择"
+    }
+  ]
+}
