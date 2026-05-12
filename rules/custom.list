@@ -1,6 +1,6 @@
-# 自定义代理规则：源数据由 scripts/generate.py 维护
-# 兼容 Clash/Mihomo 风格 rules，可按需拆分到 rule-providers
-# kuku.lu 同时保留 m.kuku.lu、kuku.lu 和 keyword 兜底规则
+# 自定义规则：源数据由 rules/custom-source.yaml 维护
+# 修改后运行：python3 scripts/generate.py
+# 输出同时兼容 Surge custom.list 与 Clash/Mihomo rule-provider payload
 
 DOMAIN,cc0cd.cc.cd,DIRECT
 DOMAIN-SUFFIX,cc0cd.cc.cd,DIRECT

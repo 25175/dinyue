@@ -1,0 +1,300 @@
+# dinyue 单一规则源文件
+#
+# 用途：只改这一份文件，然后运行 `python3 scripts/generate.py`，自动生成：
+#   - rules/custom.list      通用规则行
+#   - surge/custom.list      Surge RULE-SET 可引用的规则列表
+#   - clash/custom.yaml      Clash rule-providers 可引用的 payload
+#   - mihomo/custom.yaml     Mihomo rule-providers 可引用的 payload
+#   - loon/custom.list       Loon 兼容列表
+#   - quanx/custom.list      Quantumult X 兼容列表
+#   - sing-box/custom-source.json  结构化备份/转换源
+#
+# 推荐引用地址：
+#   Surge：
+#     RULE-SET,https://raw.githubusercontent.com/25175/dinyue/main/surge/custom.list,Proxy
+#     注意：Surge 远程 RULE-SET 命中后会使用这里最后的统一策略 Proxy；如果要保留每条规则自己的
+#     DIRECT/REJECT/Proxy，请把生成的 surge/custom.list 规则行复制进 [Rule]，或按策略拆多个远程列表。
+#
+#   Clash/Mihomo：先在 rule-providers 增加：
+#     dinyue-custom:
+#       type: http
+#       behavior: classical
+#       format: yaml
+#       url: "https://raw.githubusercontent.com/25175/dinyue/main/clash/custom.yaml"
+#       path: ./ruleset/dinyue-custom.yaml
+#       interval: 86400
+#     然后在 rules 靠前位置增加：
+#       - RULE-SET,dinyue-custom,Proxy
+#
+# 为什么 Clash/Mihomo 用 behavior: classical：
+#   因为这里包含 DOMAIN、DOMAIN-SUFFIX、DOMAIN-KEYWORD、IP-CIDR、IP-CIDR6、DST-PORT、RULE-SET
+#   等混合规则类型，不是纯 domain/ipcidr 列表。
+#
+# YAML 编辑格式说明：
+#   1. 缩进只能用空格，不要用 Tab。
+#   2. 每条规则以 `- type:` 开头，下面字段保持两个空格缩进。
+#   3. value 里如果包含冒号、#、逗号、emoji 或特殊符号，建议加英文双引号。
+#   4. policy 必须写目标策略组/策略名，例如 DIRECT、REJECT、Proxy、SF3、🎯 全球直连、👋 手动选择。
+#   5. option 可省略；常见值是 no-resolve。省略时不要写空逗号。
+#   6. enabled: false 可临时禁用一条规则；不写 enabled 时默认启用。
+#   7. comment 只是给人看的说明，不会写入最终规则行。
+#   8. 一条规则最终会生成：TYPE,VALUE,POLICY 或 TYPE,VALUE,POLICY,OPTION。
+#
+# 常见示例：
+#   - type: DOMAIN
+#     value: example.com
+#     policy: DIRECT
+#     comment: 精确匹配 example.com
+#
+#   - type: DOMAIN-SUFFIX
+#     value: example.com
+#     policy: Proxy
+#     comment: 匹配 example.com 及其子域名
+#
+#   - type: IP-CIDR
+#     value: 1.2.3.4/32
+#     policy: DIRECT
+#     option: no-resolve
+#     comment: IP 规则通常建议加 no-resolve
+#
+# 支持的 type：
+#   DOMAIN, DOMAIN-SUFFIX, DOMAIN-KEYWORD, DOMAIN-SET, IP-CIDR, IP-CIDR6,
+#   GEOIP, DST-PORT, SRC-IP-CIDR, PROCESS-NAME, RULE-SET
+#
+comments:
+  - "# 自定义规则：源数据由 rules/custom-source.yaml 维护"
+  - "# 修改后运行：python3 scripts/generate.py"
+  - "# 输出同时兼容 Surge custom.list 与 Clash/Mihomo rule-provider payload"
+
+rules:
+  - type: DOMAIN
+    value: "cc0cd.cc.cd"
+    policy: DIRECT
+    comment: "Cloudflare Tunnel 主域名直连"
+  - type: DOMAIN-SUFFIX
+    value: "cc0cd.cc.cd"
+    policy: DIRECT
+    comment: "Cloudflare Tunnel 子域名直连"
+  - type: DOMAIN-KEYWORD
+    value: "mtyy"
+    policy: DIRECT
+  - type: DOMAIN-KEYWORD
+    value: "mt"
+    policy: DIRECT
+  - type: DOMAIN-SUFFIX
+    value: "m.kuku.lu"
+    policy: SF3
+  - type: DOMAIN-SUFFIX
+    value: "kuku.lu"
+    policy: SF3
+  - type: DOMAIN-KEYWORD
+    value: "kuku"
+    policy: SF3
+  - type: IP-CIDR
+    value: "23.27.240.115/32"
+    policy: DIRECT
+  - type: DST-PORT
+    value: "22"
+    policy: DIRECT
+  - type: RULE-SET
+    value: "adblock"
+    policy: REJECT
+  - type: DOMAIN
+    value: "www.gstatic.com"
+    policy: DIRECT
+  - type: DOMAIN
+    value: "cp.cloudflare.com"
+    policy: DIRECT
+  - type: DOMAIN
+    value: "accel.ipflygates.com"
+    policy: DIRECT
+  - type: IP-CIDR
+    value: "15.235.225.64/32"
+    policy: DIRECT
+    option: no-resolve
+  - type: IP-CIDR
+    value: "15.235.225.65/32"
+    policy: DIRECT
+    option: no-resolve
+  - type: IP-CIDR
+    value: "15.235.225.66/32"
+    policy: DIRECT
+    option: no-resolve
+  - type: IP-CIDR
+    value: "15.235.228.46/32"
+    policy: DIRECT
+    option: no-resolve
+  - type: IP-CIDR
+    value: "15.235.231.178/32"
+    policy: DIRECT
+    option: no-resolve
+  - type: IP-CIDR
+    value: "15.235.231.196/32"
+    policy: DIRECT
+    option: no-resolve
+  - type: IP-CIDR
+    value: "149.52.110.74/32"
+    policy: DIRECT
+    option: no-resolve
+  - type: DOMAIN
+    value: "www.hostbuf.com"
+    policy: REJECT
+  - type: DOMAIN
+    value: "backup.www.hostbuf.com"
+    policy: REJECT
+  - type: DOMAIN
+    value: "www.youtusoft.com"
+    policy: REJECT
+  - type: DOMAIN
+    value: "youtusoft.com"
+    policy: REJECT
+  - type: DOMAIN
+    value: "hostbuf.com"
+    policy: REJECT
+  - type: DOMAIN
+    value: "dkys.org"
+    policy: REJECT
+  - type: DOMAIN
+    value: "tcpspeed.com"
+    policy: REJECT
+  - type: DOMAIN
+    value: "www.wn1998.com"
+    policy: REJECT
+  - type: DOMAIN
+    value: "wn1998.com"
+    policy: REJECT
+  - type: DOMAIN
+    value: "pwlt.wn1998.com"
+    policy: REJECT
+  - type: DOMAIN
+    value: "agentseller.temu"
+    policy: "🎯 全球直连"
+  - type: DOMAIN-KEYWORD
+    value: "seller"
+    policy: "🎯 全球直连"
+  - type: DOMAIN
+    value: "agentseller.temu.com"
+    policy: "🎯 全球直连"
+  - type: DOMAIN
+    value: "seller.temu.com"
+    policy: "🎯 全球直连"
+  - type: DOMAIN
+    value: "netcut.cn"
+    policy: "👋 手动选择"
+  - type: DOMAIN
+    value: "wenshushu.cn"
+    policy: "👋 手动选择"
+  - type: DOMAIN
+    value: "wenshushu.com"
+    policy: "👋 手动选择"
+  - type: DOMAIN
+    value: "mypikpak.com"
+    policy: "👋 手动选择"
+  - type: DOMAIN
+    value: "access.mypikpak.com"
+    policy: "👋 手动选择"
+  - type: DOMAIN
+    value: "api-drive.mypikpak.com"
+    policy: "👋 手动选择"
+  - type: DOMAIN
+    value: "config.mypikpak.com"
+    policy: "👋 手动选择"
+  - type: DOMAIN
+    value: "static.mypikpak.com"
+    policy: "👋 手动选择"
+  - type: DOMAIN
+    value: "user.mypikpak.com"
+    policy: "👋 手动选择"
+  - type: DOMAIN-KEYWORD
+    value: "17qcc.com"
+    policy: "🎯 全球直连"
+  - type: DOMAIN-KEYWORD
+    value: "v6.navy"
+    policy: "🎯 全球直连"
+  - type: DOMAIN
+    value: "v6.navy"
+    policy: "🎯 全球直连"
+  - type: DOMAIN-KEYWORD
+    value: "dynv6"
+    policy: "🎯 全球直连"
+  - type: DOMAIN
+    value: "dynv6"
+    policy: "🎯 全球直连"
+  - type: DOMAIN-KEYWORD
+    value: "navy"
+    policy: "🎯 全球直连"
+  - type: DOMAIN
+    value: "navy"
+    policy: "🎯 全球直连"
+  - type: DOMAIN-KEYWORD
+    value: "keke1.app"
+    policy: "🎯 全球直连"
+    option: no-resolve
+  - type: DOMAIN-KEYWORD
+    value: "iPv6"
+    policy: "🎯 全球直连"
+    option: no-resolve
+  - type: DOMAIN-SUFFIX
+    value: "ls.apple.com"
+    policy: "🎯 全球直连"
+    option: no-resolve
+  - type: IP-CIDR
+    value: "0.0.0.0/8"
+    policy: "🎯 全球直连"
+    option: no-resolve
+  - type: IP-CIDR
+    value: "10.0.0.0/8"
+    policy: "🎯 全球直连"
+    option: no-resolve
+  - type: IP-CIDR
+    value: "100.64.0.0/10"
+    policy: "🎯 全球直连"
+    option: no-resolve
+  - type: IP-CIDR
+    value: "127.0.0.0/8"
+    policy: "🎯 全球直连"
+    option: no-resolve
+  - type: IP-CIDR
+    value: "172.16.0.0/12"
+    policy: "🎯 全球直连"
+    option: no-resolve
+  - type: IP-CIDR
+    value: "192.168.0.0/16"
+    policy: "🎯 全球直连"
+    option: no-resolve
+  - type: IP-CIDR
+    value: "198.18.0.0/16"
+    policy: "🎯 全球直连"
+    option: no-resolve
+  - type: IP-CIDR
+    value: "224.0.0.0/4"
+    policy: "🎯 全球直连"
+    option: no-resolve
+  - type: IP-CIDR6
+    value: "::1/128"
+    policy: "🎯 全球直连"
+    option: no-resolve
+  - type: IP-CIDR6
+    value: "fc00::/7"
+    policy: "🎯 全球直连"
+    option: no-resolve
+  - type: IP-CIDR6
+    value: "fe80::/10"
+    policy: "🎯 全球直连"
+    option: no-resolve
+  - type: IP-CIDR6
+    value: "fd00::/8"
+    policy: "🎯 全球直连"
+    option: no-resolve
+  - type: DOMAIN-KEYWORD
+    value: "clipber"
+    policy: "🎯 全球直连"
+  - type: DOMAIN
+    value: "hd.lz-cdn18.com"
+    policy: "🎯 全球直连"
+  - type: DOMAIN-KEYWORD
+    value: "333ys.tv"
+    policy: "🎯 全球直连"
+  - type: DOMAIN-KEYWORD
+    value: "afreecatv.com"
+    policy: "👋 手动选择"
