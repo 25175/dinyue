@@ -1,4 +1,4 @@
-name: Generate proxy rule files
+name: 生成代理规则文件
 
 on:
   workflow_dispatch:
