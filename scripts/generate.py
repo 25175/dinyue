@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Generate proxy rule files from rules/custom-source.yaml.
+"""Generate proxy rule files from xiugai.yaml.
 
-Only edit rules/custom-source.yaml for normal maintenance.
+Only edit xiugai.yaml for normal maintenance.
 This script outputs Surge list + Clash/Mihomo YAML payload from the same source.
 """
 from pathlib import Path
@@ -11,7 +11,7 @@ import sys
 import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / 'rules' / 'custom-source.yaml'
+SOURCE = ROOT / 'xiugai.yaml'
 
 ALLOWED_TYPES = {
     'DOMAIN', 'DOMAIN-SUFFIX', 'DOMAIN-KEYWORD', 'DOMAIN-SET',
@@ -99,7 +99,7 @@ def main():
 
     payload_lines = [
         '# 自定义规则 payload，供 Clash/Mihomo rule-providers 使用',
-        '# 源数据：rules/custom-source.yaml；修改后运行 python3 scripts/generate.py',
+        '# 源数据：xiugai.yaml；修改后运行 python3 scripts/generate.py',
         '# 在 Clash/Mihomo 主配置中请使用 behavior: classical',
         'payload:',
     ]
@@ -116,7 +116,7 @@ def main():
         sing_rules.append(entry)
     write(ROOT / 'sing-box' / 'custom-source.json', json.dumps({'version': 1, 'rules': sing_rules}, ensure_ascii=False, indent=2) + '\n')
 
-    readme = f'''# dinyue 自定义代理规则\n\n统一维护一份规则源，自动输出 Surge 与 Clash/Mihomo 可引用格式。\n\n## 只改这一份\n\n- `rules/custom-source.yaml`：单一源文件，里面有详细注释和格式说明。\n\n修改后如果只想本地生成文件，运行：\n\n```bash\npython3 scripts/generate.py\n```\n\n如果要一键生成、验证、提交并推送到 GitHub，运行：\n\n```bash\npython3 scripts/update_github.py\n```\n\n也可以自定义提交说明：\n\n```bash\npython3 scripts/update_github.py -m "update custom rules"\n```\n\n## 自动生成文件\n\n- `rules/custom.list`：通用规则行\n- `surge/custom.list`：Surge `RULE-SET` 列表\n- `clash/custom.yaml`：Clash `rule-providers` payload\n- `mihomo/custom.yaml`：Mihomo `rule-providers` payload\n- `loon/custom.list`：Loon 规则列表\n- `quanx/custom.list`：Quantumult X 规则列表\n- `sing-box/custom-source.json`：结构化备份/转换源\n\n## Raw 地址\n\n```text\nhttps://raw.githubusercontent.com/25175/dinyue/main/rules/custom-source.yaml\nhttps://raw.githubusercontent.com/25175/dinyue/main/rules/custom.list\nhttps://raw.githubusercontent.com/25175/dinyue/main/clash/custom.yaml\nhttps://raw.githubusercontent.com/25175/dinyue/main/mihomo/custom.yaml\nhttps://raw.githubusercontent.com/25175/dinyue/main/surge/custom.list\nhttps://raw.githubusercontent.com/25175/dinyue/main/loon/custom.list\nhttps://raw.githubusercontent.com/25175/dinyue/main/quanx/custom.list\n```\n\n## 接入现有两份配置\n\n### Surge：`/Users/ha/Downloads/Surge.surgeconfig`\n\n在 `[Rule]` 靠前位置加入：\n\n```text\nRULE-SET,https://raw.githubusercontent.com/25175/dinyue/main/surge/custom.list,Proxy\n```\n\n说明：Surge 的远程 `RULE-SET` 最后一列是命中的统一策略；如果同一份列表里既有 DIRECT/REJECT/Proxy 等不同策略，请改为复制 `surge/custom.list` 里的规则行到 `[Rule]` 靠前位置，或者按策略拆分多个远程列表。\n\n### Clash/Mihomo：`/Users/ha/Downloads/26-05-2.yaml`\n\n在 `rule-providers:` 下加入：\n\n```yaml\n  dinyue-custom:\n    type: http\n    behavior: classical\n    format: yaml\n    url: "https://raw.githubusercontent.com/25175/dinyue/main/clash/custom.yaml"\n    path: ./ruleset/dinyue-custom.yaml\n    interval: 86400\n```\n\n在 `rules:` 靠前位置加入：\n\n```yaml\n  - RULE-SET,dinyue-custom,Proxy\n```\n\n注意：这里用 `behavior: classical`，因为规则源里包含 domain/ip/port/rule-set 等混合类型。\n\n当前启用规则数：{len(rules)}。\n'''
+    readme = f'''# dinyue 自定义代理规则\n\n统一维护一份规则源，自动输出 Surge 与 Clash/Mihomo 可引用格式。\n\n## 只改这一份\n\n- `xiugai.yaml`：单一源文件，里面有详细注释和格式说明。\n\n修改后如果只想本地生成文件，运行：\n\n```bash\npython3 scripts/generate.py\n```\n\n如果要一键生成、验证、提交并推送到 GitHub，运行：\n\n```bash\npython3 scripts/update_github.py\n```\n\n也可以自定义提交说明：\n\n```bash\npython3 scripts/update_github.py -m "update custom rules"\n```\n\n## 自动生成文件\n\n- `rules/custom.list`：通用规则行\n- `surge/custom.list`：Surge `RULE-SET` 列表\n- `clash/custom.yaml`：Clash `rule-providers` payload\n- `mihomo/custom.yaml`：Mihomo `rule-providers` payload\n- `loon/custom.list`：Loon 规则列表\n- `quanx/custom.list`：Quantumult X 规则列表\n- `sing-box/custom-source.json`：结构化备份/转换源\n\n## Raw 地址\n\n```text\nhttps://raw.githubusercontent.com/25175/dinyue/main/xiugai.yaml\nhttps://raw.githubusercontent.com/25175/dinyue/main/rules/custom.list\nhttps://raw.githubusercontent.com/25175/dinyue/main/clash/custom.yaml\nhttps://raw.githubusercontent.com/25175/dinyue/main/mihomo/custom.yaml\nhttps://raw.githubusercontent.com/25175/dinyue/main/surge/custom.list\nhttps://raw.githubusercontent.com/25175/dinyue/main/loon/custom.list\nhttps://raw.githubusercontent.com/25175/dinyue/main/quanx/custom.list\n```\n\n## 接入现有两份配置\n\n### Surge：`/Users/ha/Downloads/Surge.surgeconfig`\n\n在 `[Rule]` 靠前位置加入：\n\n```text\nRULE-SET,https://raw.githubusercontent.com/25175/dinyue/main/surge/custom.list,Proxy\n```\n\n说明：Surge 的远程 `RULE-SET` 最后一列是命中的统一策略；如果同一份列表里既有 DIRECT/REJECT/Proxy 等不同策略，请改为复制 `surge/custom.list` 里的规则行到 `[Rule]` 靠前位置，或者按策略拆分多个远程列表。\n\n### Clash/Mihomo：`/Users/ha/Downloads/26-05-2.yaml`\n\n在 `rule-providers:` 下加入：\n\n```yaml\n  dinyue-custom:\n    type: http\n    behavior: classical\n    format: yaml\n    url: "https://raw.githubusercontent.com/25175/dinyue/main/clash/custom.yaml"\n    path: ./ruleset/dinyue-custom.yaml\n    interval: 86400\n```\n\n在 `rules:` 靠前位置加入：\n\n```yaml\n  - RULE-SET,dinyue-custom,Proxy\n```\n\n注意：这里用 `behavior: classical`，因为规则源里包含 domain/ip/port/rule-set 等混合类型。\n\n当前启用规则数：{len(rules)}。\n'''
     write(ROOT / 'README.md', readme)
 
     print(f'generated {len(rules)} rules from {SOURCE}')

@@ -1,5 +1,5 @@
 # 自定义规则 payload，供 Clash/Mihomo rule-providers 使用
-# 源数据：rules/custom-source.yaml；修改后运行 python3 scripts/generate.py
+# 源数据：xiugai.yaml；修改后运行 python3 scripts/generate.py
 # 在 Clash/Mihomo 主配置中请使用 behavior: classical
 payload:
   - "DOMAIN,cc0cd.cc.cd,DIRECT"

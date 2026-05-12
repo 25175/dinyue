@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - "rules/custom-source.yaml"
+      - "xiugai.yaml"
       - "scripts/generate.py"
       - ".github/workflows/generate-rules.yml"
 
@@ -47,11 +47,11 @@ jobs:
           import yaml
 
           root = Path('.')
-          source = yaml.safe_load((root / 'rules/custom-source.yaml').read_text(encoding='utf-8'))
+          source = yaml.safe_load((root / 'xiugai.yaml').read_text(encoding='utf-8'))
           clash = yaml.safe_load((root / 'clash/custom.yaml').read_text(encoding='utf-8'))
           mihomo = yaml.safe_load((root / 'mihomo/custom.yaml').read_text(encoding='utf-8'))
 
-          assert isinstance(source, dict) and isinstance(source.get('rules'), list), 'custom-source.yaml must contain rules list'
+          assert isinstance(source, dict) and isinstance(source.get('rules'), list), 'xiugai.yaml must contain rules list'
           assert clash == mihomo, 'clash/custom.yaml and mihomo/custom.yaml must be identical'
           assert isinstance(clash.get('payload'), list) and clash['payload'], 'clash payload must be non-empty'
 
@@ -72,6 +72,6 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md rules surge clash mihomo loon quanx sing-box scripts
+          git add README.md xiugai.yaml rules surge clash mihomo loon quanx sing-box scripts
           git commit -m "auto-generate proxy rule files"
           git push

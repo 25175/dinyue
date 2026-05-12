@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate files, commit changes, and push to GitHub.
 
-Normal usage after editing rules/custom-source.yaml:
+Normal usage after editing xiugai.yaml:
 
     python3 scripts/update_github.py
 
@@ -45,11 +45,11 @@ def run(cmd: list[str], *, capture: bool = False) -> str:
 
 
 def validate_outputs() -> int:
-    source = yaml.safe_load((ROOT / "rules/custom-source.yaml").read_text(encoding="utf-8"))
+    source = yaml.safe_load((ROOT / "xiugai.yaml").read_text(encoding="utf-8"))
     clash = yaml.safe_load((ROOT / "clash/custom.yaml").read_text(encoding="utf-8"))
     mihomo = yaml.safe_load((ROOT / "mihomo/custom.yaml").read_text(encoding="utf-8"))
     if not isinstance(source, dict) or not isinstance(source.get("rules"), list):
-        raise SystemExit("rules/custom-source.yaml 格式错误：需要包含 rules: 列表")
+        raise SystemExit("xiugai.yaml 格式错误：需要包含 rules: 列表")
     if clash != mihomo:
         raise SystemExit("clash/custom.yaml 和 mihomo/custom.yaml 内容不一致")
     payload = clash.get("payload")
@@ -98,7 +98,7 @@ def main() -> None:
     print(status, end="")
 
     print("4/5 git add + commit")
-    run(["git", "add", "README.md", "rules", "surge", "clash", "mihomo", "loon", "quanx", "sing-box", "scripts"])
+    run(["git", "add", "README.md", "xiugai.yaml", "rules", "surge", "clash", "mihomo", "loon", "quanx", "sing-box", "scripts", ".github/workflows"])
     run(["git", "commit", "-m", args.message])
 
     if args.no_push:

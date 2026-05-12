@@ -4,7 +4,7 @@
 
 ## 只改这一份
 
-- `rules/custom-source.yaml`：单一源文件，里面有详细注释和格式说明。
+- `xiugai.yaml`：单一源文件，里面有详细注释和格式说明。
 
 修改后如果只想本地生成文件，运行：
 
@@ -37,7 +37,7 @@ python3 scripts/update_github.py -m "update custom rules"
 ## Raw 地址
 
 ```text
-https://raw.githubusercontent.com/25175/dinyue/main/rules/custom-source.yaml
+https://raw.githubusercontent.com/25175/dinyue/main/xiugai.yaml
 https://raw.githubusercontent.com/25175/dinyue/main/rules/custom.list
 https://raw.githubusercontent.com/25175/dinyue/main/clash/custom.yaml
 https://raw.githubusercontent.com/25175/dinyue/main/mihomo/custom.yaml
