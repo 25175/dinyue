@@ -1,0 +1,77 @@
+name: Generate proxy rule files
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "rules/custom-source.yaml"
+      - "scripts/generate.py"
+      - ".github/workflows/generate-rules.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: generate-proxy-rules-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pyyaml
+
+      - name: Generate files from single source
+        run: python scripts/generate.py
+
+      - name: Validate generated outputs
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          import yaml
+
+          root = Path('.')
+          source = yaml.safe_load((root / 'rules/custom-source.yaml').read_text(encoding='utf-8'))
+          clash = yaml.safe_load((root / 'clash/custom.yaml').read_text(encoding='utf-8'))
+          mihomo = yaml.safe_load((root / 'mihomo/custom.yaml').read_text(encoding='utf-8'))
+
+          assert isinstance(source, dict) and isinstance(source.get('rules'), list), 'custom-source.yaml must contain rules list'
+          assert clash == mihomo, 'clash/custom.yaml and mihomo/custom.yaml must be identical'
+          assert isinstance(clash.get('payload'), list) and clash['payload'], 'clash payload must be non-empty'
+
+          surge_lines = [line for line in (root / 'surge/custom.list').read_text(encoding='utf-8').splitlines() if line and not line.startswith('#')]
+          rules_lines = [line for line in (root / 'rules/custom.list').read_text(encoding='utf-8').splitlines() if line and not line.startswith('#')]
+          assert surge_lines == rules_lines == clash['payload'], 'generated list/payload files are inconsistent'
+
+          json.loads((root / 'sing-box/custom-source.json').read_text(encoding='utf-8'))
+          print(f'validated {len(surge_lines)} rules')
+          PY
+
+      - name: Commit generated files
+        run: |
+          if git diff --quiet; then
+            echo "No generated file changes."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md rules surge clash mihomo loon quanx sing-box scripts
+          git commit -m "auto-generate proxy rule files"
+          git push
