@@ -24,7 +24,7 @@ ALLOWED_TYPES = {
 DEFAULT_SURGE_POLICY_MAP = {
     '🎯 全球直连': 'DIRECT',
     '👋 手动选择': 'Proxy',
-    'SF3': 'Proxy',
+    'SF3': '日本节点',
 }
 
 BUILTIN_POLICIES = {'DIRECT', 'REJECT', 'REJECT-DROP', 'REJECT-TINYGIF', 'Proxy'}
@@ -36,6 +36,7 @@ BUILTIN_POLICIES = {'DIRECT', 'REJECT', 'REJECT-DROP', 'REJECT-TINYGIF', 'Proxy'
 # Keep DOMAIN-KEYWORD inline for Surge. Some Surge versions/configs are picky
 # about DOMAIN-KEYWORD inside external rule-set files; inline [Rule] form is safer
 # for important keyword rules such as mtyy/mt.
+# If a keyword also needs Surge remote split matching, add real DOMAIN/DOMAIN-SUFFIX rules.
 SURGE_REMOTE_RULE_TYPES = {'DOMAIN', 'DOMAIN-SUFFIX', 'IP-CIDR', 'IP-CIDR6', 'GEOIP'}
 
 
@@ -214,7 +215,7 @@ def main():
 
     write(ROOT / 'surge' / 'inline-rules.conf', '\n'.join([
         '# 这些规则类型不适合放进 Surge 外部 RULE-SET，需直接复制到 [Rule]。',
-        '# 例如 DST-PORT、嵌套 RULE-SET 等。',
+        '# 例如 DOMAIN-KEYWORD、DST-PORT、嵌套 RULE-SET 等。',
         *surge_inline_lines,
         '',
     ]))

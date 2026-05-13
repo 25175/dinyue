@@ -13,6 +13,8 @@
 #   Surge：
 #     复制 surge/rule-set-lines.conf 里的多条 RULE-SET 到 [Rule] 靠前位置。
 #     脚本会按 surge_policy_map 自动把 Clash/Mihomo 策略名映射到当前 Surge 策略组，并拆分成多个远程列表。
+#     Surge 远程 split RULE-SET 只放 DOMAIN、DOMAIN-SUFFIX、IP-CIDR、IP-CIDR6、GEOIP 这类稳妥类型；
+#     DOMAIN-KEYWORD、DST-PORT、嵌套 RULE-SET 等保留到 surge/inline-rules.conf，需按需直接复制到 [Rule]。
 #
 #   Clash/Mihomo：先在 rule-providers 增加：
 #     dinyue-custom:
@@ -28,6 +30,8 @@
 # 为什么 Clash/Mihomo 用 behavior: classical：
 #   因为这里包含 DOMAIN、DOMAIN-SUFFIX、DOMAIN-KEYWORD、IP-CIDR、IP-CIDR6、DST-PORT、RULE-SET
 #   等混合规则类型，不是纯 domain/ipcidr 列表。
+#   Clash/Mihomo classical 支持这些混合类型放在同一个 rule-provider payload 里。
+#   Surge 远程 RULE-SET 不适合混放所有类型，所以脚本会拆分远程列表与 inline 规则。
 #
 # YAML 编辑格式说明：
 #   1. 缩进只能用空格，不要用 Tab。
@@ -42,7 +46,8 @@
 #
 # 推荐一行示例：
 #   - {type: DOMAIN, value: "example.com", policy: DIRECT, comment: "精确匹配 example.com"}
-#   - {type: DOMAIN-SUFFIX, value: "example.com", policy: Proxy, comment: "匹配 example.com 及其子域名"}
+#   - {type: DOMAIN-SUFFIX, value: "example.com", policy: Proxy, comment: "域名后缀匹配 example.com 及其子域名，不是关键词包含匹配"}
+#   - {type: DOMAIN-KEYWORD, value: "example", policy: Proxy, comment: "关键词包含匹配；Surge 中建议放 inline-rules.conf"}
 #   - {type: IP-CIDR, value: "1.2.3.4/32", policy: DIRECT, option: no-resolve, comment: "IP 规则通常建议加 no-resolve"}
 #
 # 多行示例也支持：
@@ -61,16 +66,16 @@ comments:
   - "# Clash/Mihomo 保留原 policy；Surge 会按 surge_policy_map 自动映射并拆分"
 
 # Surge 策略组映射：左边是 xiugai.yaml 里写的 policy，右边是当前 Surge [Proxy Group] 里存在的策略。
-# 你的 Surge 当前没有 SF3 / 🎯 全球直连 / 👋 手动选择，所以这里自动转成 Proxy / DIRECT。
+# SF3 在 Surge 中对应日本节点；如果你的 Surge 策略组名称不同，请改成实际策略组名。
 surge_policy_map:
   "🎯 全球直连": DIRECT
   "👋 手动选择": Proxy
-  SF3: Proxy
+  SF3: 日本节点
 
 rules:
   - {type: DOMAIN, value: cc0cd.cc.cd, policy: DIRECT, comment: "Cloudflare Tunnel 主域名直连"}
   - {type: DOMAIN-SUFFIX, value: cc0cd.cc.cd, policy: DIRECT, comment: "Cloudflare Tunnel 子域名直连"}
-  - {type: DOMAIN-KEYWORD, value: mtyy, policy: DIRECT}
+  - {type: DOMAIN-KEYWORD, value: mtyy, policy: DIRECT, comment: "mtyy 关键词直连；Clash/Mihomo classical 可用，Surge 需从 inline-rules.conf 复制到 [Rule] 靠前"}
   - {type: DOMAIN-KEYWORD, value: mt, policy: DIRECT}
   - {type: DOMAIN-SUFFIX, value: m.kuku.lu, policy: SF3}
   - {type: DOMAIN-SUFFIX, value: kuku.lu, policy: SF3}

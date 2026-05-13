@@ -24,6 +24,8 @@ xiugai.yaml
 - `policy`：目标策略，例如 `DIRECT`、`REJECT`、`Proxy`、`🎯 全球直连`、`👋 手动选择`。
 - `comment`：备注说明，只给人看，不会写入最终规则。
 - 推荐域名通配用 `DOMAIN-SUFFIX`，不要写 `*.example.com`。
+- `DOMAIN-SUFFIX,example.com` 是域名后缀/子域匹配，可命中 `example.com`、`www.example.com`、`a.b.example.com`；它不是关键词包含匹配。
+- 如果只是想让 Surge 远程 `split/direct.list` 命中某个站点，优先写 `DOMAIN` 或 `DOMAIN-SUFFIX`；`DOMAIN-KEYWORD` 会保留到 `surge/inline-rules.conf`。
 
 ## 二、自动部署方式
 
@@ -97,7 +99,35 @@ https://raw.githubusercontent.com/25175/dinyue/main/surge/split/reject.list
 https://raw.githubusercontent.com/25175/dinyue/main/surge/split/proxy.list
 ```
 
-## 六、Surge 接入方式
+## 六、规则类型兼容性说明
+
+### Clash / Mihomo
+
+`clash/custom.yaml` 与 `mihomo/custom.yaml` 供 `rule-providers` 使用，必须配置 `behavior: classical`。classical 支持混合规则类型，所以本仓库可以把 `DOMAIN`、`DOMAIN-SUFFIX`、`DOMAIN-KEYWORD`、`IP-CIDR`、`IP-CIDR6`、`DST-PORT`、`RULE-SET` 等放在同一个 payload 里。
+
+### Surge
+
+Surge 的普通 `[Rule]` 内联规则和远程外部 `RULE-SET` 不是同一套限制：
+
+| 类型 | Clash/Mihomo classical | Surge 远程 split RULE-SET | Surge inline-rules.conf |
+| --- | --- | --- | --- |
+| `DOMAIN` | 支持 | 支持，进入 `surge/split/*.list` | 支持 |
+| `DOMAIN-SUFFIX` | 支持 | 支持，进入 `surge/split/*.list` | 支持 |
+| `DOMAIN-KEYWORD` | 支持 | 本仓库不放入远程 split，避免部分 Surge 版本/配置解析不稳 | 支持，进入 `surge/inline-rules.conf` |
+| `IP-CIDR` / `IP-CIDR6` / `GEOIP` | 支持 | 支持，进入 `surge/split/*.list` | 支持 |
+| `DST-PORT` | 支持 | 不放入远程 split | 支持，进入 `surge/inline-rules.conf` |
+| `RULE-SET` | 支持 | 不嵌套放入远程 split | 支持，进入 `surge/inline-rules.conf` |
+| `SRC-IP-CIDR` / `PROCESS-NAME` / 其他扩展类型 | classical 中按客户端支持情况处理 | 不放入远程 split | 如 Surge 当前版本支持，可手动内联 |
+
+因此：关键词 `mtyy` 走 `DIRECT` 时，Clash/Mihomo 可由 `DOMAIN-KEYWORD,mtyy,DIRECT` 在 classical provider 中生效；Surge 需要把 `surge/inline-rules.conf` 里的 `DOMAIN-KEYWORD,mtyy,DIRECT` 复制到 `[Rule]` 靠前位置。
+
+如果想让 Surge 远程 `surge/split/direct.list` 生效，只能为真实的具体域名写 `DOMAIN` 或 `DOMAIN-SUFFIX`，例如：
+
+```yaml
+- {type: DOMAIN-SUFFIX, value: example.com, policy: DIRECT, comment: "example.com 及所有子域名直连"}
+```
+
+## 七、Surge 接入方式
 
 本地配置文件：
 
@@ -105,17 +135,20 @@ https://raw.githubusercontent.com/25175/dinyue/main/surge/split/proxy.list
 /Users/ha/Downloads/Surge.surgeconfig
 ```
 
-在 `[Rule]` 靠前位置加入以下三条即可，不需要把所有域名一条条写进 Surge：
+在 `[Rule]` 靠前位置加入 `surge/rule-set-lines.conf` 里的远程规则集行即可，不需要把所有域名一条条写进 Surge。当前示例：
 
 ```text
 RULE-SET,https://raw.githubusercontent.com/25175/dinyue/main/surge/split/direct.list,DIRECT
+RULE-SET,https://raw.githubusercontent.com/25175/dinyue/main/surge/split/日本节点.list,日本节点
 RULE-SET,https://raw.githubusercontent.com/25175/dinyue/main/surge/split/reject.list,REJECT
 RULE-SET,https://raw.githubusercontent.com/25175/dinyue/main/surge/split/proxy.list,Proxy
 ```
 
+如需让 `DOMAIN-KEYWORD`、`DST-PORT` 等 inline 规则也在 Surge 生效，再把 `surge/inline-rules.conf` 里的对应行复制到这些 `RULE-SET` 前面。
+
 Surge 不一定会在规则搜索里展开远程规则集里的具体域名。判断是否生效，主要看连接详情是否命中 `DIRECT` / `REJECT` / `Proxy`，以及对应规则集的使用计数是否增加。
 
-## 七、Surge 策略映射
+## 八、Surge 策略映射
 
 `xiugai.yaml` 可以继续使用 Clash/Mihomo 的策略名，脚本会自动映射到当前 Surge 策略组。
 
@@ -125,16 +158,16 @@ Surge 不一定会在规则搜索里展开远程规则集里的具体域名。�
 surge_policy_map:
   "🎯 全球直连": DIRECT
   "👋 手动选择": Proxy
-  SF3: Proxy
+  SF3: 日本节点
 ```
 
 也就是说：
 
 - `🎯 全球直连` 在 Clash/Mihomo 中保留原名，Surge 输出为 `DIRECT`
 - `👋 手动选择` 在 Clash/Mihomo 中保留原名，Surge 输出为 `Proxy`
-- `SF3` 在 Clash/Mihomo 中保留原名，Surge 输出为 `Proxy`
+- `SF3` 在 Clash/Mihomo 中保留原名，Surge 输出为 `日本节点`；如果你的 Surge 策略组名称不同，请在 `xiugai.yaml` 改成实际策略组名
 
-## 八、Clash / Mihomo 接入方式
+## 九、Clash / Mihomo 接入方式
 
 本地配置文件：
 
@@ -162,7 +195,7 @@ surge_policy_map:
 
 注意：这里必须用 `behavior: classical`，因为规则源里包含 domain、ip、port、rule-set 等混合类型。
 
-## 九、常见问题
+## 十、常见问题
 
 ### 1. GitHub 网页改完多久生效？
 
@@ -174,13 +207,13 @@ surge_policy_map:
 
 ### 3. 为什么推荐 `DOMAIN-SUFFIX`？
 
-`DOMAIN-SUFFIX,mtyy1.com` 已经覆盖：
+`DOMAIN-SUFFIX,example.com` 已经覆盖：
 
-- `mtyy1.com`
-- `www.mtyy1.com`
-- 任意子域名 `.mtyy1.com`
+- `example.com`
+- `www.example.com`
+- 任意子域名 `.example.com`
 
-所以不需要写 `*.mtyy1.com`，也不需要穷举每个子域名。
+所以不需要写 `*.example.com`，也不需要穷举每个子域名。
 
 ### 4. Surge 外部规则集解析失败怎么办？
 

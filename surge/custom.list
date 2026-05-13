@@ -49,20 +49,10 @@ DOMAIN-KEYWORD,clipber,DIRECT
 DOMAIN,hd.lz-cdn18.com,DIRECT
 DOMAIN-KEYWORD,333ys.tv,DIRECT
 
-# policy: Proxy
-DOMAIN-SUFFIX,m.kuku.lu,Proxy
-DOMAIN-SUFFIX,kuku.lu,Proxy
-DOMAIN-KEYWORD,kuku,Proxy
-DOMAIN,netcut.cn,Proxy
-DOMAIN,wenshushu.cn,Proxy
-DOMAIN,wenshushu.com,Proxy
-DOMAIN,mypikpak.com,Proxy
-DOMAIN,access.mypikpak.com,Proxy
-DOMAIN,api-drive.mypikpak.com,Proxy
-DOMAIN,config.mypikpak.com,Proxy
-DOMAIN,static.mypikpak.com,Proxy
-DOMAIN,user.mypikpak.com,Proxy
-DOMAIN-KEYWORD,afreecatv.com,Proxy
+# policy: 日本节点
+DOMAIN-SUFFIX,m.kuku.lu,日本节点
+DOMAIN-SUFFIX,kuku.lu,日本节点
+DOMAIN-KEYWORD,kuku,日本节点
 
 # policy: REJECT
 RULE-SET,adblock,REJECT
@@ -76,3 +66,15 @@ DOMAIN,tcpspeed.com,REJECT
 DOMAIN,www.wn1998.com,REJECT
 DOMAIN,wn1998.com,REJECT
 DOMAIN,pwlt.wn1998.com,REJECT
+
+# policy: Proxy
+DOMAIN,netcut.cn,Proxy
+DOMAIN,wenshushu.cn,Proxy
+DOMAIN,wenshushu.com,Proxy
+DOMAIN,mypikpak.com,Proxy
+DOMAIN,access.mypikpak.com,Proxy
+DOMAIN,api-drive.mypikpak.com,Proxy
+DOMAIN,config.mypikpak.com,Proxy
+DOMAIN,static.mypikpak.com,Proxy
+DOMAIN,user.mypikpak.com,Proxy
+DOMAIN-KEYWORD,afreecatv.com,Proxy
