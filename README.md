@@ -33,14 +33,17 @@ xiugai.yaml
 
 ```text
 .github/workflows/generate-rules.yml
+.github/workflows/sync-surge-family.yml
 ```
 
 自动流程：
 
 1. 读取 `xiugai.yaml`
 2. 生成各客户端规则文件
-3. 校验 YAML / JSON / Surge 拆分规则
-4. 自动提交生成结果到仓库
+3. 同步 Rabbit-Spec Surge Family 上游配置和规则
+4. 把 Dinyue 自定义规则插入到生成版 Surge Family 配置的上游规则前面
+5. 校验 YAML / JSON / Surge 拆分规则
+6. 自动提交生成结果到仓库
 
 通常 10 秒到 2 分钟完成。完成后在 GitHub 的 Actions 页面会看到绿色成功状态。
 
@@ -81,6 +84,10 @@ python3 scripts/update_github.py -m "更新自定义规则"
 - `surge/split/proxy.list`：Surge 代理远程规则集
 - `surge/rule-set-lines.conf`：可复制到 Surge `[Rule]` 的远程 `RULE-SET` 行
 - `surge/inline-rules.conf`：少数不适合 Surge 外部规则集的内联规则，仅按需使用
+- `surge/上游/Rabbit-Spec/`：Rabbit-Spec Surge Family 原始上游备份，包含原始配置和规则列表
+- `surge/generated/Surge-Family.conf`：推荐给 Surge 使用的完整生成配置，已把 Dinyue 自定义规则放在 Rabbit 上游规则前面
+- `surge/generated/Rules/`：生成版 Surge Family 使用的规则集，包含上游镜像和 Dinyue 自定义规则集
+- `surge/generated/Dinyue-inline-rules.conf`：少数仍需手动内联的特殊规则
 - `loon/custom.list`：Loon 规则列表
 - `quanx/custom.list`：Quantumult X 规则列表
 - `sing-box/custom-source.json`：结构化备份/转换源
@@ -113,21 +120,44 @@ Surge 的普通 `[Rule]` 内联规则和远程外部 `RULE-SET` 不是同一套�
 | --- | --- | --- | --- |
 | `DOMAIN` | 支持 | 支持，进入 `surge/split/*.list` | 支持 |
 | `DOMAIN-SUFFIX` | 支持 | 支持，进入 `surge/split/*.list` | 支持 |
-| `DOMAIN-KEYWORD` | 支持 | 本仓库不放入远程 split，避免部分 Surge 版本/配置解析不稳 | 支持，进入 `surge/inline-rules.conf` |
+| `DOMAIN-KEYWORD` | 支持 | 已实测支持，可进入 `surge/generated/Rules/Dinyue-*.list`；旧版 `surge/split` 仍按脚本设置生成 | 支持 |
 | `IP-CIDR` / `IP-CIDR6` / `GEOIP` | 支持 | 支持，进入 `surge/split/*.list` | 支持 |
 | `DST-PORT` | 支持 | 不放入远程 split | 支持，进入 `surge/inline-rules.conf` |
 | `RULE-SET` | 支持 | 不嵌套放入远程 split | 支持，进入 `surge/inline-rules.conf` |
 | `SRC-IP-CIDR` / `PROCESS-NAME` / 其他扩展类型 | classical 中按客户端支持情况处理 | 不放入远程 split | 如 Surge 当前版本支持，可手动内联 |
 
-因此：关键词 `mtyy` 走 `DIRECT` 时，Clash/Mihomo 可由 `DOMAIN-KEYWORD,mtyy,DIRECT` 在 classical provider 中生效；Surge 需要把 `surge/inline-rules.conf` 里的 `DOMAIN-KEYWORD,mtyy,DIRECT` 复制到 `[Rule]` 靠前位置。
+因此：关键词 `mtyy` 走 `DIRECT` 时，Clash/Mihomo 可由 `DOMAIN-KEYWORD,mtyy,DIRECT` 在 classical provider 中生效；Surge 生成版 `surge/generated/Surge-Family.conf` 会把它自动放进 `Dinyue-DIRECT.list` 这类远程规则集。
 
-如果想让 Surge 远程 `surge/split/direct.list` 生效，只能为真实的具体域名写 `DOMAIN` 或 `DOMAIN-SUFFIX`，例如：
+如果使用旧版 `surge/split/*.list` 接入方式，仍以 `scripts/generate.py` 的输出为准；如遇特殊规则未进入远程列表，请查看 `surge/inline-rules.conf`。
+
+如果想让 Surge 远程规则更精确，推荐为真实的具体域名写 `DOMAIN` 或 `DOMAIN-SUFFIX`，例如：
 
 ```yaml
 - {type: DOMAIN-SUFFIX, value: example.com, policy: DIRECT, comment: "example.com 及所有子域名直连"}
 ```
 
 ## 七、Surge 接入方式
+
+### 推荐：使用生成版 Surge Family 完整配置
+
+推荐直接使用本仓库生成的完整配置：
+
+```text
+https://raw.githubusercontent.com/25175/dinyue/main/surge/generated/Surge-Family.conf
+```
+
+这个文件基于 Rabbit-Spec 的 `Surge-Family.conf` 自动生成：
+
+- `surge/上游/Rabbit-Spec/` 保存 Rabbit-Spec 原始上游备份。
+- `surge/generated/Rules/` 保存最终规则集，所有 Rabbit 上游规则 URL 已改写到本仓库。
+- `[Rule]` 里会先出现视觉分隔明显的 `Dinyue 自定义规则（优先匹配）` 区块。
+- 后面再出现 `Rabbit-Spec 上游规则` 区块，方便定位哪些是自己加的、哪些来自上游。
+- `xiugai.yaml` 中可进入远程规则集的自定义规则会自动生成到 `surge/generated/Rules/Dinyue-*.list`。
+- 少数特殊规则会生成到 `surge/generated/Dinyue-inline-rules.conf`，如需完整生效请按需复制到 `[Rule]` 靠前。
+
+注意：这是公共仓库，生成配置中不要写入真实机场订阅地址、token 或其它私密信息。上游模板里的 `policy-path=你的订阅地址` 应保持占位，真实订阅地址建议只在本地 Surge 配置中维护。
+
+### 旧方式：只接入 Dinyue 自定义远程规则
 
 本地配置文件：
 

@@ -1,0 +1,14 @@
+# Dinyue 自定义规则：REJECT
+# 源数据：xiugai.yaml；由 scripts/sync_surge_family.py 自动生成。
+# 本文件为 Surge 外部 RULE-SET 匹配条件，不包含策略列。
+
+DOMAIN,www.hostbuf.com
+DOMAIN,backup.www.hostbuf.com
+DOMAIN,www.youtusoft.com
+DOMAIN,youtusoft.com
+DOMAIN,hostbuf.com
+DOMAIN,dkys.org
+DOMAIN,tcpspeed.com
+DOMAIN,www.wn1998.com
+DOMAIN,wn1998.com
+DOMAIN,pwlt.wn1998.com

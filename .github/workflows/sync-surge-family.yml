@@ -1,0 +1,40 @@
+name: Sync Surge Family
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"
+  push:
+    branches: [main]
+    paths:
+      - "xiugai.yaml"
+      - "scripts/sync_surge_family.py"
+      - ".github/workflows/sync-surge-family.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  sync-surge-family:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade pyyaml
+
+      - name: Sync Rabbit-Spec Surge Family and Dinyue rules
+        run: python3 scripts/sync_surge_family.py
+
+      - name: Commit generated files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "自动同步 Surge Family 上游规则"
+          file_pattern: "surge/上游/ surge/generated/"

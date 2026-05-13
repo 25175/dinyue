@@ -1,6 +1,0 @@
-# Surge DOMAIN-KEYWORD remote RULE-SET test
-# 如果 Surge 能加载并命中本文件，说明 DOMAIN-KEYWORD 可以进入远程 split 规则集。
-
-DOMAIN-KEYWORD,mtyy
-DOMAIN-KEYWORD,mytt
-DOMAIN-KEYWORD,mt
