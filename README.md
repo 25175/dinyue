@@ -188,14 +188,14 @@ Surge 不一定会在规则搜索里展开远程规则集里的具体域名。�
 surge_policy_map:
   "🎯 全球直连": DIRECT
   "👋 手动选择": Proxy
-  SF3: 日本节点
+  SF3: "🇯🇵 日本节点"
 ```
 
 也就是说：
 
 - `🎯 全球直连` 在 Clash/Mihomo 中保留原名，Surge 输出为 `DIRECT`
 - `👋 手动选择` 在 Clash/Mihomo 中保留原名，Surge 输出为 `Proxy`
-- `SF3` 在 Clash/Mihomo 中保留原名，Surge 输出为 `日本节点`；如果你的 Surge 策略组名称不同，请在 `xiugai.yaml` 改成实际策略组名
+- `SF3` 在 Clash/Mihomo 中保留原名，Surge Family 输出为 `🇯🇵 日本节点`；必须和 `[Proxy Group]` 里的策略组名称完全一致，如果你的 Surge 策略组名称不同，请在 `xiugai.yaml` 改成实际策略组名
 
 ## 九、Clash / Mihomo 接入方式
 

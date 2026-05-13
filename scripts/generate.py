@@ -24,7 +24,7 @@ ALLOWED_TYPES = {
 DEFAULT_SURGE_POLICY_MAP = {
     '🎯 全球直连': 'DIRECT',
     '👋 手动选择': 'Proxy',
-    'SF3': '日本节点',
+    'SF3': '🇯🇵 日本节点',
 }
 
 BUILTIN_POLICIES = {'DIRECT', 'REJECT', 'REJECT-DROP', 'REJECT-TINYGIF', 'Proxy'}
@@ -130,6 +130,7 @@ def safe_filename(policy):
         'Microsoft': 'microsoft',
         'Google': 'google',
         'Game': 'game',
+        '🇯🇵 日本节点': 'japan',
         '✈️ 主力机场': 'main-airport',
         '🚀 备用机场': 'backup-airport',
     }

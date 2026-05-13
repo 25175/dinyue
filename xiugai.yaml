@@ -66,11 +66,11 @@ comments:
   - "# Clash/Mihomo 保留原 policy；Surge 会按 surge_policy_map 自动映射并拆分"
 
 # Surge 策略组映射：左边是 xiugai.yaml 里写的 policy，右边是当前 Surge [Proxy Group] 里存在的策略。
-# SF3 在 Surge 中对应日本节点；如果你的 Surge 策略组名称不同，请改成实际策略组名。
+# SF3 在 Surge Family 中对应带国旗的日本节点策略组；如果你的 Surge 策略组名称不同，请改成实际策略组名。
 surge_policy_map:
   "🎯 全球直连": DIRECT
   "👋 手动选择": Proxy
-  SF3: 日本节点
+  SF3: "🇯🇵 日本节点"
 
 rules:
   - {type: DOMAIN, value: cc0cd.cc.cd, policy: DIRECT, comment: "Cloudflare Tunnel 主域名直连"}

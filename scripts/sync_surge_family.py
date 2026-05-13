@@ -32,7 +32,7 @@ SELF_RAW_PREFIX = "https://raw.githubusercontent.com/25175/dinyue/main"
 DEFAULT_SURGE_POLICY_MAP = {
     "🎯 全球直连": "DIRECT",
     "👋 手动选择": "Proxy",
-    "SF3": "日本节点",
+    "SF3": "🇯🇵 日本节点",
 }
 
 ALLOWED_TYPES = {
@@ -56,7 +56,7 @@ SAFE_FILENAME_TABLE = {
     "REJECT-DROP": "Dinyue-REJECT-DROP.list",
     "REJECT-TINYGIF": "Dinyue-REJECT-TINYGIF.list",
     "Proxy": "Dinyue-Proxy.list",
-    "日本节点": "Dinyue-日本节点.list",
+    "🇯🇵 日本节点": "Dinyue-Japan.list",
     "AIGC": "Dinyue-AIGC.list",
     "Apple": "Dinyue-Apple.list",
     "Telegram": "Dinyue-Telegram.list",
