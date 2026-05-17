@@ -1,7 +1,7 @@
 # NAME: 深巷有喵的「Proxy」规则
 # AUTHOR: Rabbit-Spec
 # REPO: https://github.com/Rabbit-Spec/Surge
-# UPDATED: 2026.05.17 04:57:45
+# UPDATED: 2026.05.17 19:58:35
 # TOTAL: 6817
 
 # ======= 手动维护规则 ========
@@ -15,6 +15,8 @@ DOMAIN-SUFFIX,caldigit.com
 DOMAIN-SUFFIX,onlyfans.com
 # Dbrand
 DOMAIN-SUFFIX,dbrand.com
+# HomeAssistant
+DOMAIN-SUFFIX,home-assistant.io
 
 # ======= GitHub ========
 DOMAIN-SUFFIX,atom.io
@@ -50,7 +52,6 @@ DOMAIN-SUFFIX,thegithubshop.com
 DOMAIN-KEYWORD,github
 
 # ======= Telegram ========
-DOMAIN,7h1s_rul35et_i5_mad3_by_5ukk4w-ruleset.skk.moe
 IP-CIDR,91.105.192.0/23,no-resolve
 IP-CIDR,91.108.4.0/22,no-resolve
 IP-CIDR,91.108.8.0/21,no-resolve
