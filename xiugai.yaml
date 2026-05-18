@@ -73,7 +73,7 @@ surge_policy_map:
   SF3: "🇯🇵 日本节点"
 
 rules:
-  - {type: DOMAIN, value: luckyous, policy: DIRECT, comment: "邮箱网站"}
+  - {type: DOMAIN, value: luckyous.com, policy: DIRECT, comment: "邮箱网站"}
   - {type: DOMAIN, value: cc0cd.cc.cd, policy: DIRECT, comment: "Cloudflare Tunnel 主域名直连"}
   - {type: DOMAIN-SUFFIX, value: cc0cd.cc.cd, policy: DIRECT, comment: "Cloudflare Tunnel 子域名直连"}
   - {type: DOMAIN-KEYWORD, value: mtyy, policy: DIRECT, comment: "mtyy 关键词直连；Clash/Mihomo classical 可用，Surge 需从 inline-rules.conf 复制到 [Rule] 靠前"}
