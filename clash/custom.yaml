@@ -2,7 +2,6 @@
 # 源数据：xiugai.yaml；修改后运行 python3 scripts/generate.py
 # 在 Clash/Mihomo 主配置中请使用 behavior: classical
 payload:
-  - "DOMAIN,luckyous.com,DIRECT"
   - "DOMAIN,cc0cd.cc.cd,DIRECT"
   - "DOMAIN-SUFFIX,cc0cd.cc.cd,DIRECT"
   - "DOMAIN-KEYWORD,mtyy,DIRECT"

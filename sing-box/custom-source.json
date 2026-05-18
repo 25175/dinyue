@@ -3,11 +3,6 @@
   "rules": [
     {
       "type": "DOMAIN",
-      "value": "luckyous.com",
-      "outbound": "DIRECT"
-    },
-    {
-      "type": "DOMAIN",
       "value": "cc0cd.cc.cd",
       "outbound": "DIRECT"
     },

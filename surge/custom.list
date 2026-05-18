@@ -3,7 +3,6 @@
 # 如果直接复制本文件到 [Rule]，每行末尾策略会生效；如果用远程 RULE-SET，建议使用 split/ 下的按策略拆分文件。
 
 # policy: DIRECT
-DOMAIN,luckyous.com,DIRECT
 DOMAIN,cc0cd.cc.cd,DIRECT
 DOMAIN-SUFFIX,cc0cd.cc.cd,DIRECT
 DOMAIN-KEYWORD,mtyy,DIRECT

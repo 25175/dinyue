@@ -2,7 +2,6 @@
 # 修改后运行：python3 scripts/generate.py；或在 GitHub 网页直接改 xiugai.yaml 触发 Actions 自动生成
 # Clash/Mihomo 保留原 policy；Surge 会按 surge_policy_map 自动映射并拆分
 
-DOMAIN,luckyous.com,DIRECT
 DOMAIN,cc0cd.cc.cd,DIRECT
 DOMAIN-SUFFIX,cc0cd.cc.cd,DIRECT
 DOMAIN-KEYWORD,mtyy,DIRECT
