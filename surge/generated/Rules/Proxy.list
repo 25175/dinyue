@@ -1,8 +1,8 @@
 # NAME: 深巷有喵的「Proxy」规则
 # AUTHOR: Rabbit-Spec
 # REPO: https://github.com/Rabbit-Spec/Surge
-# UPDATED: 2026.05.21 06:01:40
-# TOTAL: 6820
+# UPDATED: 2026.05.22 05:41:56
+# TOTAL: 6826
 
 # ======= 手动维护规则 ========
 # SNBFORUMS
@@ -1853,6 +1853,7 @@ DOMAIN-SUFFIX,ezua.com
 DOMAIN-SUFFIX,f-droid.org
 DOMAIN-SUFFIX,f2pool.com
 DOMAIN-SUFFIX,f8.com
+DOMAIN-SUFFIX,f95zone.to
 DOMAIN-SUFFIX,fabric.io
 DOMAIN-SUFFIX,faceless.me
 DOMAIN-SUFFIX,facesofnyfw.com
@@ -2191,6 +2192,7 @@ DOMAIN-SUFFIX,fzlm.com
 DOMAIN-SUFFIX,fzlm.net
 DOMAIN-SUFFIX,g-area.org
 DOMAIN-SUFFIX,g-queen.com
+DOMAIN-SUFFIX,g.ai
 DOMAIN-SUFFIX,g.co
 DOMAIN-SUFFIX,g.kfd.me
 DOMAIN-SUFFIX,g0v.social
@@ -3300,6 +3302,7 @@ DOMAIN-SUFFIX,leisurepro.com
 DOMAIN-SUFFIX,lematin.ch
 DOMAIN-SUFFIX,lemonde.fr
 DOMAIN-SUFFIX,lenwhite.com
+DOMAIN-SUFFIX,leonardo.ai
 DOMAIN-SUFFIX,lerosua.org
 DOMAIN-SUFFIX,lesoir.be
 DOMAIN-SUFFIX,lester850.info
@@ -4633,6 +4636,7 @@ DOMAIN-SUFFIX,rangzen.org
 DOMAIN-SUFFIX,ranxiang.com
 DOMAIN-SUFFIX,ranyunfei.com
 DOMAIN-SUFFIX,rapbull.net
+DOMAIN-SUFFIX,raphael.app
 DOMAIN-SUFFIX,rapidgator.net
 DOMAIN-SUFFIX,rapidmoviez.com
 DOMAIN-SUFFIX,rapidvpn.com
@@ -4759,6 +4763,7 @@ DOMAIN-SUFFIX,rts.ch
 DOMAIN-SUFFIX,rtycminnesota.org
 DOMAIN-SUFFIX,ruanyifeng.com
 DOMAIN-SUFFIX,rukor.org
+DOMAIN-SUFFIX,rule34.us
 DOMAIN-SUFFIX,rule34.xxx
 DOMAIN-SUFFIX,rule34video.com
 DOMAIN-SUFFIX,rumble.com
@@ -5093,6 +5098,7 @@ DOMAIN-SUFFIX,sos.org
 DOMAIN-SUFFIX,sosad.fun
 DOMAIN-SUFFIX,sosreader.com
 DOMAIN-SUFFIX,sostibet.org
+DOMAIN-SUFFIX,sotwe.com
 DOMAIN-SUFFIX,sou-tong.org
 DOMAIN-SUFFIX,soubory.com
 DOMAIN-SUFFIX,soul-plus.net
