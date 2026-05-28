@@ -1,8 +1,8 @@
 # NAME: 深巷有喵的「Proxy」规则
 # AUTHOR: Rabbit-Spec
 # REPO: https://github.com/Rabbit-Spec/Surge
-# UPDATED: 2026.05.27 05:51:50
-# TOTAL: 6829
+# UPDATED: 2026.05.28 06:02:04
+# TOTAL: 6830
 
 # ======= 手动维护规则 ========
 # SNBFORUMS
@@ -3734,6 +3734,7 @@ DOMAIN-SUFFIX,mousebreaker.com
 DOMAIN-SUFFIX,movements.org
 DOMAIN-SUFFIX,moves-export.com
 DOMAIN-SUFFIX,moviefap.com
+DOMAIN-SUFFIX,mozilla.ai
 DOMAIN-SUFFIX,mozilla.org
 DOMAIN-SUFFIX,moztw.org
 DOMAIN-SUFFIX,mp3buscador.com
