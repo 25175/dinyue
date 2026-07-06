@@ -1,8 +1,8 @@
 # NAME: 深巷有喵的「AIGC」规则
 # AUTHOR: Rabbit-Spec
 # REPO: https://github.com/Rabbit-Spec/Surge
-# UPDATED: 2026.07.05 05:05:08
-# TOTAL: 120
+# UPDATED: 2026.07.06 05:09:46
+# TOTAL: 121
 
 # ======= 上游同步规则 ========
 DOMAIN,7h1s_rul35et_i5_mad3_by_5ukk4w-ruleset.skk.moe
@@ -56,6 +56,7 @@ DOMAIN-SUFFIX,claudemcpclient.com
 DOMAIN-SUFFIX,claudemcpcontent.com
 DOMAIN-SUFFIX,claudeusercontent.com
 DOMAIN-SUFFIX,client-api.arkoselabs.com
+DOMAIN-SUFFIX,clients6.google.com
 DOMAIN-SUFFIX,clientstream.launchdarkly.com
 DOMAIN-SUFFIX,clipdrop.co
 DOMAIN-SUFFIX,cloudcode-pa.googleapis.com
