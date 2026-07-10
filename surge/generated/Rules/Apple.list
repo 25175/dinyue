@@ -1,7 +1,7 @@
 # NAME: 深巷有喵的「Apple」规则
 # AUTHOR: Rabbit-Spec
 # REPO: https://github.com/Rabbit-Spec/Surge
-# UPDATED: 2026.07.09 13:57:37
+# UPDATED: 2026.07.10 05:27:23
 # TOTAL: 1616
 
 # ======= 上游同步规则 ========
@@ -1604,9 +1604,9 @@ USER-AGENT,locationd*
 USER-AGENT,passd*
 USER-AGENT,Music*
 USER-AGENT,AppleNews*
-USER-AGENT,AppleTV*
 USER-AGENT,com.apple.news*
 USER-AGENT,com.apple.trustd*
+USER-AGENT,AppleTV*
 USER-AGENT,com.apple.tv*
 PROCESS-NAME,CoreLocationAgent
 PROCESS-NAME,WeatherWidget
