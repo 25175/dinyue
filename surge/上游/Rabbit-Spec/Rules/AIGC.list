@@ -1,8 +1,8 @@
 # NAME: 深巷有喵的「AIGC」规则
 # AUTHOR: Rabbit-Spec
 # REPO: https://github.com/Rabbit-Spec/Surge
-# UPDATED: 2026.07.17 05:09:08
-# TOTAL: 123
+# UPDATED: 2026.07.18 05:02:19
+# TOTAL: 126
 
 # ======= 上游同步规则 ========
 DOMAIN,7h1s_rul35et_i5_mad3_by_5ukk4w-ruleset.skk.moe
@@ -38,6 +38,7 @@ DOMAIN-SUFFIX,aistudio.google.com
 DOMAIN-SUFFIX,algolia.net
 DOMAIN-SUFFIX,android.chat.openai.com
 DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,api.revenuecat.com
 DOMAIN-SUFFIX,api.statsig.com
 DOMAIN-SUFFIX,app.launchdarkly.com
 DOMAIN-SUFFIX,auth.openai.com
@@ -105,6 +106,7 @@ DOMAIN-SUFFIX,openaicom.imgix.net
 DOMAIN-SUFFIX,openart.ai
 DOMAIN-SUFFIX,perplexity.ai
 DOMAIN-SUFFIX,poe.com
+DOMAIN-SUFFIX,pool.ntp.org
 DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
 DOMAIN-SUFFIX,prodregistryv2.org
 DOMAIN-SUFFIX,rum.browser-intake-datadoghq.com
@@ -121,6 +123,7 @@ DOMAIN-SUFFIX,turn.livekit.cloud
 DOMAIN-SUFFIX,workos.com
 DOMAIN-SUFFIX,workos.imgix.net
 DOMAIN-SUFFIX,x.ai
+IP-ASN,13335,no-resolve
 IP-ASN,20473,no-resolve
 IP-ASN,399358,no-resolve
 IP-CIDR,129.146.3.78/32,no-resolve
