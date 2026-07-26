@@ -2,6 +2,8 @@
 # 源数据：xiugai.yaml；由 scripts/sync_surge_family.py 自动生成。
 # 本文件为 Surge 外部 RULE-SET 匹配条件，不包含策略列。
 
+DOMAIN,cc0cd.cc.cd
+DOMAIN-SUFFIX,cc0cd.cc.cd
 DOMAIN,netcut.cn
 DOMAIN,wenshushu.cn
 DOMAIN,wenshushu.com
