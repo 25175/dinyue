@@ -367,6 +367,646 @@
       "type": "DOMAIN-KEYWORD",
       "value": "afreecatv.com",
       "outbound": "👋 手动选择"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "claude.app",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "claude.site",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "modelcontextprotocol.io",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "augmentcode.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "bfl.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "bolt.host",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "bolt.new",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "staticblitz.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "webcontainer-api.io",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "webcontainer.io",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "cerebras.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "cerebras.net",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "c.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "character.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "characterai.io",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "civitai.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "civitai.green",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "civitai.red",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "cohere.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "cohere.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "anysphere-binaries.s3.us-east-1.amazonaws.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "cursor-cdn.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "cursor.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "cursor.sh",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "cursorapi.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "cursorvm.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "deepinfra.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "deepl.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "cognition.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "devin.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "devinapps.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "elevenlabs.io",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "elevenmusic.io",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "elevenreader.io",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "fireworks.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "gamma.app",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "genspark.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "copilot-proxy.githubusercontent.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "copilot-reports.github.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "copilot-telemetry.githubusercontent.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "default.exp-tas.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "origin-tracker.githubusercontent.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "githubcopilot.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "aiplatform.googleapis.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "aitestkitchen.withgoogle.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "cloudaicompanion.googleapis.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "gemini.gstatic.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "stitch.withgoogle.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "ai.google",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "ai.studio",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "flow.google",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "jules.google",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "labs.google",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "opal.google",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "heygen.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "heygen.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "hf.co",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "hf.space",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "huggingface.co",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "ideogram.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "api.app.prod.grazie.aws.intellij.net",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "api.jetbrains.cloud",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "jetbrains.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "q.eu-central-1.amazonaws.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "q.us-east-1.amazonaws.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "kiro.dev",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "krea.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "lmarena.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "leonardo.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "lovable.app",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "lovable.dev",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "lovableproject.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "cdn-luma.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "lumalabs.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "manus.im",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "manuscdn.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "ai.facebook.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "ai.meta.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "llama.meta.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "llama.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "copilot.cloud.microsoft",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "copilot.microsoft.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "edgeservices.bing.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "sydney.bing.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "copilot.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "copilot.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "midjourney.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "mistral.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "oaistatsig.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "openai.fm",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "ppl-ai-file-upload.s3.amazonaws.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "pplx-res.cloudinary.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "perplexity.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "pplx.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "pika.art",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "poecdn.net",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "r8.im",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "replicate.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "replicate.delivery",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "replit.app",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "replit.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "replit.dev",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "runwayml.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "stability.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "suno.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "suno.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "synthesia-prd-file-storage.s3.amazonaws.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "synthesia-ttv-data.s3-eu-west-1.amazonaws.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "synthesia.io",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "together.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "together.xyz",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "trae-api-sg.mchost.guru",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "trae.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "udio.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "v0.app",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "v0.build",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "v0.dev",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "vusercontent.net",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "codeium.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "codeiumdata.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "windsurf.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "you.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "zed.dev",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "fal.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "fal.media",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "fal.run",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN",
+      "value": "grok.x.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "grokipedia.com",
+      "outbound": "AIGC"
     }
   ]
 }
