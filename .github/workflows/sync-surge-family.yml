@@ -33,6 +33,11 @@ jobs:
       - name: Sync Rabbit-Spec Surge Family and Dinyue rules
         run: python3 scripts/sync_surge_family.py
 
+      # generate-rules 与本 workflow 常被同一次 push 同时触发，
+      # 推送前先并入对方已推送的提交，避免 non-fast-forward 失败。
+      - name: Rebase onto latest main
+        run: git pull --rebase --autostash origin main
+
       - name: Commit generated files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
