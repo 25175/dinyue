@@ -74,8 +74,8 @@ surge_policy_map:
 
 rules:
 
-  - {type: DOMAIN, value: cc0cd.cc.cd, policy: DIRECT, comment: "Cloudflare Tunnel 主域名直连"}
-  - {type: DOMAIN-SUFFIX, value: cc0cd.cc.cd, policy: DIRECT, comment: "Cloudflare Tunnel 子域名直连"}
+  - {type: DOMAIN, value: cc0cd.cc.cd, policy: 👋 手动选择, comment: "Cloudflare Tunnel 主域名走代理（2026-07-26 由直连改，统一三端）"}
+  - {type: DOMAIN-SUFFIX, value: cc0cd.cc.cd, policy: 👋 手动选择, comment: "Cloudflare Tunnel 子域名走代理（2026-07-26 由直连改，统一三端）"}
   - {type: DOMAIN-KEYWORD, value: mtyy, policy: DIRECT, comment: "mtyy 关键词直连；Clash/Mihomo classical 可用，Surge 需从 inline-rules.conf 复制到 [Rule] 靠前"}
   - {type: DOMAIN-KEYWORD, value: mt, policy: DIRECT}
   - {type: DOMAIN-SUFFIX, value: m.kuku.lu, policy: SF3}

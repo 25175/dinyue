@@ -19,6 +19,8 @@ import urllib.request
 
 import yaml
 
+from zh_rules import load_zh_rules
+
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "xiugai.yaml"
 UPSTREAM_ROOT = ROOT / "surge" / "上游" / "Rabbit-Spec"
@@ -103,6 +105,7 @@ def load_xiugai() -> tuple[list[dict[str, str]], dict[str, str]]:
     if not isinstance(user_map, dict):
         fail("surge_policy_map must be a mapping")
     mapping.update({str(k).strip(): str(v).strip() for k, v in user_map.items()})
+    raw_rules = list(raw_rules) + load_zh_rules(ROOT / "xiugai2.yaml")
 
     rules: list[dict[str, str]] = []
     for idx, item in enumerate(raw_rules, 1):

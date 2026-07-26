@@ -12,6 +12,8 @@ import sys
 
 import yaml
 
+from zh_rules import load_zh_rules
+
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'xiugai.yaml'
 
@@ -65,6 +67,7 @@ def load_source():
         fail('surge_policy_map must be a mapping')
     merged_map = dict(DEFAULT_SURGE_POLICY_MAP)
     merged_map.update({str(k).strip(): str(v).strip() for k, v in surge_policy_map.items()})
+    rules = list(rules) + load_zh_rules(ROOT / 'xiugai2.yaml')
     return comments, rules, merged_map
 
 

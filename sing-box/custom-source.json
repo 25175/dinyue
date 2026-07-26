@@ -4,12 +4,12 @@
     {
       "type": "DOMAIN",
       "value": "cc0cd.cc.cd",
-      "outbound": "DIRECT"
+      "outbound": "👋 手动选择"
     },
     {
       "type": "DOMAIN-SUFFIX",
       "value": "cc0cd.cc.cd",
-      "outbound": "DIRECT"
+      "outbound": "👋 手动选择"
     },
     {
       "type": "DOMAIN-KEYWORD",

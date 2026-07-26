@@ -2,9 +2,21 @@
 # 已按 surge_policy_map 把 Clash/Mihomo 策略名映射为当前 Surge 策略组
 # 如果直接复制本文件到 [Rule]，每行末尾策略会生效；如果用远程 RULE-SET，建议使用 split/ 下的按策略拆分文件。
 
+# policy: Proxy
+DOMAIN,cc0cd.cc.cd,Proxy
+DOMAIN-SUFFIX,cc0cd.cc.cd,Proxy
+DOMAIN,netcut.cn,Proxy
+DOMAIN,wenshushu.cn,Proxy
+DOMAIN,wenshushu.com,Proxy
+DOMAIN,mypikpak.com,Proxy
+DOMAIN,access.mypikpak.com,Proxy
+DOMAIN,api-drive.mypikpak.com,Proxy
+DOMAIN,config.mypikpak.com,Proxy
+DOMAIN,static.mypikpak.com,Proxy
+DOMAIN,user.mypikpak.com,Proxy
+DOMAIN-KEYWORD,afreecatv.com,Proxy
+
 # policy: DIRECT
-DOMAIN,cc0cd.cc.cd,DIRECT
-DOMAIN-SUFFIX,cc0cd.cc.cd,DIRECT
 DOMAIN-KEYWORD,mtyy,DIRECT
 DOMAIN-KEYWORD,mt,DIRECT
 IP-CIDR,23.27.240.115/32,DIRECT
@@ -66,18 +78,6 @@ DOMAIN,tcpspeed.com,REJECT
 DOMAIN,www.wn1998.com,REJECT
 DOMAIN,wn1998.com,REJECT
 DOMAIN,pwlt.wn1998.com,REJECT
-
-# policy: Proxy
-DOMAIN,netcut.cn,Proxy
-DOMAIN,wenshushu.cn,Proxy
-DOMAIN,wenshushu.com,Proxy
-DOMAIN,mypikpak.com,Proxy
-DOMAIN,access.mypikpak.com,Proxy
-DOMAIN,api-drive.mypikpak.com,Proxy
-DOMAIN,config.mypikpak.com,Proxy
-DOMAIN,static.mypikpak.com,Proxy
-DOMAIN,user.mypikpak.com,Proxy
-DOMAIN-KEYWORD,afreecatv.com,Proxy
 
 # policy: AIGC
 DOMAIN-SUFFIX,claude.app,AIGC
