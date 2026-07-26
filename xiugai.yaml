@@ -143,3 +143,189 @@ rules:
   - {type: DOMAIN, value: hd.lz-cdn18.com, policy: "🎯 全球直连"}
   - {type: DOMAIN-KEYWORD, value: 333ys.tv, policy: "🎯 全球直连"}
   - {type: DOMAIN-KEYWORD, value: afreecatv.com, policy: "👋 手动选择"}
+
+  # ======== AIGC：海外 AI 服务显式走 AIGC 策略组（自动生成区块，勿手工混入其他规则） ========
+  # 来源：各厂商官方 allowlist 文档 + GitHub 公开规则仓库（blackmatrix7/ios_rule_script、SukkaW ruleset 等），已 DNS 验证
+  # 与上游 Rabbit-Spec AIGC.list 已去重；上游已覆盖的域名（openai.com/anthropic.com/claude.ai/gemini/x.ai/perplexity.ai 等）不在此重复
+  # 维护方式：直接改本区块，push 后 Actions 自动生成 surge/split/aigc.list 与 surge/generated/Rules/Dinyue-AIGC.list
+  # --- Anthropic ---
+  - {type: DOMAIN-SUFFIX, value: claude.app, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: claude.site, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: modelcontextprotocol.io, policy: AIGC}
+  # --- Augment Code ---
+  - {type: DOMAIN-SUFFIX, value: augmentcode.com, policy: AIGC}
+  # --- Black Forest Labs ---
+  - {type: DOMAIN-SUFFIX, value: bfl.ai, policy: AIGC}
+  # --- Bolt ---
+  - {type: DOMAIN-SUFFIX, value: bolt.host, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: bolt.new, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: staticblitz.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: webcontainer-api.io, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: webcontainer.io, policy: AIGC}
+  # --- Cerebras ---
+  - {type: DOMAIN-SUFFIX, value: cerebras.ai, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: cerebras.net, policy: AIGC}
+  # --- Character.AI ---
+  - {type: DOMAIN-SUFFIX, value: c.ai, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: character.ai, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: characterai.io, policy: AIGC}
+  # --- Civitai ---
+  - {type: DOMAIN-SUFFIX, value: civitai.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: civitai.green, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: civitai.red, policy: AIGC}
+  # --- Cohere ---
+  - {type: DOMAIN-SUFFIX, value: cohere.ai, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: cohere.com, policy: AIGC}
+  # --- Cursor ---
+  - {type: DOMAIN, value: anysphere-binaries.s3.us-east-1.amazonaws.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: cursor-cdn.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: cursor.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: cursor.sh, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: cursorapi.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: cursorvm.com, policy: AIGC}
+  # --- DeepInfra ---
+  - {type: DOMAIN-SUFFIX, value: deepinfra.com, policy: AIGC}
+  # --- DeepL ---
+  - {type: DOMAIN-SUFFIX, value: deepl.com, policy: AIGC}
+  # --- Devin ---
+  - {type: DOMAIN-SUFFIX, value: cognition.ai, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: devin.ai, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: devinapps.com, policy: AIGC}
+  # --- ElevenLabs ---
+  - {type: DOMAIN-SUFFIX, value: elevenlabs.io, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: elevenmusic.io, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: elevenreader.io, policy: AIGC}
+  # --- Fireworks AI ---
+  - {type: DOMAIN-SUFFIX, value: fireworks.ai, policy: AIGC}
+  # --- Gamma ---
+  - {type: DOMAIN-SUFFIX, value: gamma.app, policy: AIGC}
+  # --- Genspark ---
+  - {type: DOMAIN-SUFFIX, value: genspark.ai, policy: AIGC}
+  # --- GitHub Copilot ---
+  - {type: DOMAIN, value: copilot-proxy.githubusercontent.com, policy: AIGC}
+  - {type: DOMAIN, value: copilot-reports.github.com, policy: AIGC}
+  - {type: DOMAIN, value: copilot-telemetry.githubusercontent.com, policy: AIGC}
+  - {type: DOMAIN, value: default.exp-tas.com, policy: AIGC}
+  - {type: DOMAIN, value: origin-tracker.githubusercontent.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: githubcopilot.com, policy: AIGC}
+  # --- Google AI ---
+  - {type: DOMAIN, value: aiplatform.googleapis.com, policy: AIGC}
+  - {type: DOMAIN, value: aitestkitchen.withgoogle.com, policy: AIGC}
+  - {type: DOMAIN, value: cloudaicompanion.googleapis.com, policy: AIGC}
+  - {type: DOMAIN, value: gemini.gstatic.com, policy: AIGC}
+  - {type: DOMAIN, value: stitch.withgoogle.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: ai.google, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: ai.studio, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: flow.google, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: jules.google, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: labs.google, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: opal.google, policy: AIGC}
+  # --- HeyGen ---
+  - {type: DOMAIN-SUFFIX, value: heygen.ai, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: heygen.com, policy: AIGC}
+  # --- Hugging Face ---
+  - {type: DOMAIN-SUFFIX, value: hf.co, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: hf.space, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: huggingface.co, policy: AIGC}
+  # --- Ideogram ---
+  - {type: DOMAIN-SUFFIX, value: ideogram.ai, policy: AIGC}
+  # --- JetBrains AI ---
+  - {type: DOMAIN, value: api.app.prod.grazie.aws.intellij.net, policy: AIGC}
+  - {type: DOMAIN, value: api.jetbrains.cloud, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: jetbrains.ai, policy: AIGC}
+  # --- Kiro ---
+  - {type: DOMAIN, value: q.eu-central-1.amazonaws.com, policy: AIGC}
+  - {type: DOMAIN, value: q.us-east-1.amazonaws.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: kiro.dev, policy: AIGC}
+  # --- Krea ---
+  - {type: DOMAIN-SUFFIX, value: krea.ai, policy: AIGC}
+  # --- LM Arena ---
+  - {type: DOMAIN-SUFFIX, value: lmarena.ai, policy: AIGC}
+  # --- Leonardo AI ---
+  - {type: DOMAIN-SUFFIX, value: leonardo.ai, policy: AIGC}
+  # --- Lovable ---
+  - {type: DOMAIN-SUFFIX, value: lovable.app, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: lovable.dev, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: lovableproject.com, policy: AIGC}
+  # --- Luma AI ---
+  - {type: DOMAIN-SUFFIX, value: cdn-luma.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: lumalabs.ai, policy: AIGC}
+  # --- Manus ---
+  - {type: DOMAIN-SUFFIX, value: manus.im, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: manuscdn.com, policy: AIGC}
+  # --- Meta AI ---
+  - {type: DOMAIN, value: ai.facebook.com, policy: AIGC}
+  - {type: DOMAIN, value: ai.meta.com, policy: AIGC}
+  - {type: DOMAIN, value: llama.meta.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: llama.com, policy: AIGC}
+  # --- Microsoft Copilot ---
+  - {type: DOMAIN, value: copilot.cloud.microsoft, policy: AIGC}
+  - {type: DOMAIN, value: copilot.microsoft.com, policy: AIGC}
+  - {type: DOMAIN, value: edgeservices.bing.com, policy: AIGC}
+  - {type: DOMAIN, value: sydney.bing.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: copilot.ai, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: copilot.com, policy: AIGC}
+  # --- Midjourney ---
+  - {type: DOMAIN-SUFFIX, value: midjourney.com, policy: AIGC}
+  # --- Mistral AI / Le Chat ---
+  - {type: DOMAIN-SUFFIX, value: mistral.ai, policy: AIGC}
+  # --- OpenAI ---
+  - {type: DOMAIN-SUFFIX, value: oaistatsig.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: openai.fm, policy: AIGC}
+  # --- Perplexity ---
+  - {type: DOMAIN, value: ppl-ai-file-upload.s3.amazonaws.com, policy: AIGC}
+  - {type: DOMAIN, value: pplx-res.cloudinary.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: perplexity.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: pplx.ai, policy: AIGC}
+  # --- Pika ---
+  - {type: DOMAIN-SUFFIX, value: pika.art, policy: AIGC}
+  # --- Poe ---
+  - {type: DOMAIN-SUFFIX, value: poecdn.net, policy: AIGC}
+  # --- Replicate ---
+  - {type: DOMAIN-SUFFIX, value: r8.im, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: replicate.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: replicate.delivery, policy: AIGC}
+  # --- Replit AI ---
+  - {type: DOMAIN-SUFFIX, value: replit.app, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: replit.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: replit.dev, policy: AIGC}
+  # --- Runway ---
+  - {type: DOMAIN-SUFFIX, value: runwayml.com, policy: AIGC}
+  # --- Stability AI ---
+  - {type: DOMAIN-SUFFIX, value: stability.ai, policy: AIGC}
+  # --- Suno ---
+  - {type: DOMAIN-SUFFIX, value: suno.ai, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: suno.com, policy: AIGC}
+  # --- Synthesia ---
+  - {type: DOMAIN, value: synthesia-prd-file-storage.s3.amazonaws.com, policy: AIGC}
+  - {type: DOMAIN, value: synthesia-ttv-data.s3-eu-west-1.amazonaws.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: synthesia.io, policy: AIGC}
+  # --- Together AI ---
+  - {type: DOMAIN-SUFFIX, value: together.ai, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: together.xyz, policy: AIGC}
+  # --- Trae ---
+  - {type: DOMAIN, value: trae-api-sg.mchost.guru, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: trae.ai, policy: AIGC}
+  # --- Udio ---
+  - {type: DOMAIN-SUFFIX, value: udio.com, policy: AIGC}
+  # --- Vercel v0 ---
+  - {type: DOMAIN-SUFFIX, value: v0.app, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: v0.build, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: v0.dev, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: vusercontent.net, policy: AIGC}
+  # --- Windsurf/Codeium ---
+  - {type: DOMAIN-SUFFIX, value: codeium.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: codeiumdata.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: windsurf.com, policy: AIGC}
+  # --- You.com ---
+  - {type: DOMAIN-SUFFIX, value: you.com, policy: AIGC}
+  # --- Zed AI ---
+  - {type: DOMAIN-SUFFIX, value: zed.dev, policy: AIGC}
+  # --- fal.ai ---
+  - {type: DOMAIN-SUFFIX, value: fal.ai, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: fal.media, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: fal.run, policy: AIGC}
+  # --- xAI ---
+  - {type: DOMAIN, value: grok.x.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: grokipedia.com, policy: AIGC}
+  # ======== AIGC 区块结束 ========
