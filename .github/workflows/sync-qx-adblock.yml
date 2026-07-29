@@ -1,4 +1,4 @@
-name: Sync curated QX AD Block Plus
+name: Sync curated QX advertising lists
 
 on:
   workflow_dispatch:
@@ -10,12 +10,14 @@ on:
       - "scripts/sync_qx_adblock.py"
       - ".github/workflows/sync-qx-adblock.yml"
       - "LICENSES/NobyDa-ND-AD-MIT.txt"
+      - "LICENSES/NobyDa-Script-GPL-3.0.txt"
+      - "LICENSES/blackmatrix7-ios_rule_script-GPL-2.0.txt"
 
 permissions:
   contents: write
 
 concurrency:
-  group: sync-curated-qx-adblock-${{ github.ref }}
+  group: sync-curated-qx-advertising-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -26,14 +28,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Generate curated QX rule list
+      - name: Generate curated QX advertising lists
         run: python3 scripts/sync_qx_adblock.py
 
-      - name: Verify generated artifact
+      - name: Verify generated artifacts
         run: python3 scripts/sync_qx_adblock.py --check
 
-      - name: Commit updated rule list
+      - name: Commit updated rule lists
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "自动同步清洗版 QX AD_Block_Plus"
-          file_pattern: "QuantumultX/AD_Block_Plus.txt"
+          commit_message: "自动同步清洗版 QX 广告规则"
+          file_pattern: "QuantumultX/AD_Block_Plus.txt QuantumultX/AdRule.list QuantumultX/Advertising.list"
