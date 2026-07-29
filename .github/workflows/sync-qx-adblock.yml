@@ -1,0 +1,39 @@
+name: Sync curated QX AD Block Plus
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/sync_qx_adblock.py"
+      - ".github/workflows/sync-qx-adblock.yml"
+      - "LICENSES/NobyDa-ND-AD-MIT.txt"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-curated-qx-adblock-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate curated QX rule list
+        run: python3 scripts/sync_qx_adblock.py
+
+      - name: Verify generated artifact
+        run: python3 scripts/sync_qx_adblock.py --check
+
+      - name: Commit updated rule list
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "自动同步清洗版 QX AD_Block_Plus"
+          file_pattern: "QuantumultX/AD_Block_Plus.txt"
