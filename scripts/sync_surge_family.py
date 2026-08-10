@@ -29,6 +29,7 @@ GENERATED_RULES = GENERATED_ROOT / "Rules"
 
 RABBIT_CONF_URL = "https://raw.githubusercontent.com/Rabbit-Spec/Surge/refs/heads/Master/Conf/Spec/Surge-Family.conf"
 RABBIT_RAW_PREFIX_RE = re.compile(r"https://raw\.githubusercontent\.com/Rabbit-Spec/Surge/(?:refs/heads/)?Master/Rules/([^,\s]+)")
+APPLE_AI_URL = "https://raw.githubusercontent.com/RocM301/Apple-Rule/refs/heads/main/Apple-AI.list"
 SELF_RAW_PREFIX = "https://raw.githubusercontent.com/25175/dinyue/main"
 
 DEFAULT_SURGE_POLICY_MAP = {
@@ -193,6 +194,39 @@ def mirror_upstream(conf_text: str) -> list[str]:
     return names
 
 
+def mirror_apple_ai() -> int:
+    """Mirror RocM301 Apple Intelligence/Siri/Relay rules for Surge."""
+    text = fetch_text(APPLE_AI_URL)
+    supported_types = {
+        "DOMAIN", "DOMAIN-SUFFIX", "DOMAIN-KEYWORD", "DOMAIN-SET",
+        "IP-CIDR", "IP-CIDR6", "GEOIP", "IP-ASN",
+    }
+    rule_count = 0
+    for line_number, raw_line in enumerate(text.splitlines(), 1):
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        parts = [part.strip() for part in line.split(",")]
+        rule_type = parts[0].upper() if parts else ""
+        if len(parts) != 2 or rule_type not in supported_types or not parts[1]:
+            fail(f"Apple-AI upstream has unsupported Surge rule at line {line_number}: {raw_line}")
+        rule_count += 1
+    if not rule_count:
+        fail(f"Apple-AI upstream returned no supported Surge rules: {APPLE_AI_URL}")
+    normalized_lines = []
+    for raw_line in text.splitlines():
+        line = raw_line.strip()
+        if line and not line.startswith("#"):
+            parts = [part.strip() for part in line.split(",")]
+            parts[0] = parts[0].upper()
+            raw_line = ",".join(parts)
+        normalized_lines.append(raw_line)
+    normalized = "\n".join(normalized_lines) + "\n"
+    write(ROOT / "surge" / "上游" / "RocM301" / "Apple-AI.list", normalized)
+    write(GENERATED_RULES / "Apple-AI.list", normalized)
+    return rule_count
+
+
 def build_dinyue_rules(rules: list[dict[str, str]], mapping: dict[str, str]) -> tuple[list[str], list[str], OrderedDict[str, str]]:
     buckets: OrderedDict[str, list[dict[str, str]]] = OrderedDict()
     inline: list[str] = []
@@ -233,13 +267,12 @@ def rewrite_upstream_rule_line(line: str) -> str:
 
 def build_generated_conf(conf_text: str, dinyue_rule_set_lines: list[str], inline_lines: list[str]) -> str:
     before, header, rule_body, after = split_sections(conf_text)
-    new_rule_body: list[str] = []
-    new_rule_body.extend([
+    new_rule_body: list[str] = [
         "# ============================================================",
         "# Dinyue 自定义规则（优先匹配）",
         "# 源数据：xiugai.yaml；生成规则：surge/generated/Rules/Dinyue-*.list",
         "# ============================================================",
-    ])
+    ]
     if dinyue_rule_set_lines:
         new_rule_body.extend(dinyue_rule_set_lines)
     else:
@@ -253,6 +286,10 @@ def build_generated_conf(conf_text: str, dinyue_rule_set_lines: list[str], inlin
         ])
         new_rule_body.extend(f"# {line}" for line in inline_lines)
     new_rule_body.extend([
+        "",
+        "# ============================================================",
+        "# RocM301 Apple-AI 上游规则（由 GitHub Actions 每 6 小时同步）",
+        f"RULE-SET,{SELF_RAW_PREFIX}/surge/generated/Rules/Apple-AI.list,Apple,extended-matching",
         "",
         "# ============================================================",
         "# Rabbit-Spec 上游规则（URL 已改写到本仓库镜像）",
@@ -277,6 +314,7 @@ def main() -> None:
         shutil.rmtree(GENERATED_RULES)
     conf_text = fetch_text(RABBIT_CONF_URL)
     upstream_names = mirror_upstream(conf_text)
+    apple_ai_count = mirror_apple_ai()
     rules, mapping = load_xiugai()
     dinyue_rule_set_lines, inline_lines, policy_to_file = build_dinyue_rules(rules, mapping)
     generated_conf = build_generated_conf(conf_text, dinyue_rule_set_lines, inline_lines)
@@ -299,6 +337,7 @@ def main() -> None:
         "",
     ]))
     print(f"mirrored upstream rules: {len(upstream_names)}")
+    print(f"mirrored Apple-AI rules: {apple_ai_count}")
     print("dinyue remote policies:", ", ".join(policy_to_file.keys()) or "none")
     print(f"dinyue inline rules: {len(inline_lines)}")
     print(f"generated: {GENERATED_ROOT / 'Surge-Family.conf'}")

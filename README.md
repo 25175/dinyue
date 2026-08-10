@@ -103,8 +103,17 @@ https://raw.githubusercontent.com/25175/dinyue/main/surge/custom.list
 https://raw.githubusercontent.com/25175/dinyue/main/surge/rule-set-lines.conf
 https://raw.githubusercontent.com/25175/dinyue/main/surge/split/direct.list
 https://raw.githubusercontent.com/25175/dinyue/main/surge/split/reject.list
+https://raw.githubusercontent.com/25175/dinyue/main/surge/generated/Rules/Apple-AI.list
 https://raw.githubusercontent.com/25175/dinyue/main/surge/split/proxy.list
 ```
+
+Apple Intelligence / Siri / Relay 规则由 `scripts/sync_surge_family.py` 从 RocM301/Apple-Rule 上游同步，生成 Surge 可直接引用的无策略规则集：
+
+```text
+RULE-SET,https://raw.githubusercontent.com/25175/dinyue/main/surge/generated/Rules/Apple-AI.list,Apple,extended-matching
+```
+
+同步工作流每 6 小时运行一次，也会在相关源文件推送后立即更新。`Apple` 是生成版 Surge Family 中已有的策略组；如使用自己的 Surge 配置，请把最后的 `Apple` 改成实际策略组名称。
 
 ## 六、规则类型兼容性说明
 
