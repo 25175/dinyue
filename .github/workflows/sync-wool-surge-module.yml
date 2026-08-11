@@ -1,0 +1,39 @@
+name: Sync wool_scripts Surge adblock module
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "27 */6 * * *"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/sync_wool_surge_module.py"
+      - ".github/workflows/sync-wool-surge-module.yml"
+      - "LICENSES/fmz200-wool_scripts-GPL-3.0.txt"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-wool-surge-module-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate curated Surge module
+        run: python3 scripts/sync_wool_surge_module.py
+
+      - name: Verify generated artifacts
+        run: python3 scripts/sync_wool_surge_module.py --check
+
+      - name: Commit updated module
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "自动同步 wool_scripts Surge 去广告模块（清洗版）"
+          file_pattern: "surge/wool_scripts/blockAds.sgmodule surge/wool_scripts/README.md"

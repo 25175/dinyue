@@ -34,6 +34,8 @@ xiugai.yaml
 ```text
 .github/workflows/generate-rules.yml
 .github/workflows/sync-surge-family.yml
+.github/workflows/sync-qx-adblock.yml
+.github/workflows/sync-wool-surge-module.yml
 ```
 
 自动流程：
@@ -42,8 +44,9 @@ xiugai.yaml
 2. 生成各客户端规则文件
 3. 同步 Rabbit-Spec Surge Family 上游配置和规则
 4. 把 Dinyue 自定义规则插入到生成版 Surge Family 配置的上游规则前面
-5. 校验 YAML / JSON / Surge 拆分规则
-6. 自动提交生成结果到仓库
+5. 同步清洗版 QX 广告规则与 wool_scripts Surge 去广告模块
+6. 校验 YAML / JSON / Surge 拆分规则
+7. 自动提交生成结果到仓库
 
 通常 10 秒到 2 分钟完成。完成后在 GitHub 的 Actions 页面会看到绿色成功状态。
 
@@ -88,6 +91,8 @@ python3 scripts/update_github.py -m "更新自定义规则"
 - `surge/generated/Surge-Family.conf`：推荐给 Surge 使用的完整生成配置，已把 Dinyue 自定义规则放在 Rabbit 上游规则前面
 - `surge/generated/Rules/`：生成版 Surge Family 使用的规则集，包含上游镜像和 Dinyue 自定义规则集
 - `surge/generated/Dinyue-inline-rules.conf`：少数仍需手动内联的特殊规则
+- `surge/wool_scripts/blockAds.sgmodule`：独立目录镜像的 fmz200/wool_scripts 去广告合集（已去除会干扰音乐会员解锁的内容），供 Surge 模块订阅
+- `QuantumultX/`：清洗版 QX 广告规则镜像（NobyDa / blackmatrix7）
 - `loon/custom.list`：Loon 规则列表
 - `quanx/custom.list`：Quantumult X 规则列表
 - `sing-box/custom-source.json`：结构化备份/转换源
@@ -105,6 +110,13 @@ https://raw.githubusercontent.com/25175/dinyue/main/surge/split/direct.list
 https://raw.githubusercontent.com/25175/dinyue/main/surge/split/reject.list
 https://raw.githubusercontent.com/25175/dinyue/main/surge/generated/Rules/Apple-AI.list
 https://raw.githubusercontent.com/25175/dinyue/main/surge/split/proxy.list
+https://raw.githubusercontent.com/25175/dinyue/main/surge/wool_scripts/blockAds.sgmodule
+```
+
+Surge 直接安装 wool_scripts 去广告合集（独立文件夹，清洗版，不影响自用音乐会员解锁）：
+
+```text
+https://raw.githubusercontent.com/25175/dinyue/main/surge/wool_scripts/blockAds.sgmodule
 ```
 
 Apple Intelligence / Siri / Relay 规则由 `scripts/sync_surge_family.py` 从 RocM301/Apple-Rule 上游同步，生成 Surge 可直接引用的无策略规则集：
