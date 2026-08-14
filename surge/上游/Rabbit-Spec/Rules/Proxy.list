@@ -1,8 +1,8 @@
 # NAME: 深巷有喵的「Proxy」规则
 # AUTHOR: Rabbit-Spec
 # REPO: https://github.com/Rabbit-Spec/Surge
-# UPDATED: 2026.08.13 04:52:55
-# TOTAL: 6942
+# UPDATED: 2026.08.14 04:50:47
+# TOTAL: 6941
 
 # ======= 手动维护规则 ========
 # SNBFORUMS
@@ -63,7 +63,6 @@ IP-CIDR,91.108.8.0/21,no-resolve
 IP-CIDR,91.108.16.0/21,no-resolve
 IP-CIDR,91.108.56.0/22,no-resolve
 IP-CIDR,95.161.64.0/20,no-resolve
-IP-CIDR,139.59.210.98/32,no-resolve
 IP-CIDR,149.154.160.0/20,no-resolve
 IP-CIDR,185.76.151.0/24,no-resolve
 IP-CIDR,194.221.250.50/32,no-resolve
