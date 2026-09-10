@@ -18,8 +18,8 @@ https://raw.githubusercontent.com/25175/dinyue/main/surge/wool_scripts/blockAds.
 
 ## 最近一次同步
 
-- Upstream SHA256: `f4d2a49d5aca3c783b67404de0083a90671efc1e1850430d3247004e1d3646f3`
-- Upstream lines: `9410`
+- Upstream SHA256: `d75a30e3410fccc4269c2749cdc430f2c6ef5b092bca1bc342279642f9918423`
+- Upstream lines: `9411`
 - Omitted conflicting units: `11`
 
 本地更新：
