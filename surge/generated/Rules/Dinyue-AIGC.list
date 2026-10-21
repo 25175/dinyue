@@ -2,6 +2,11 @@
 # 源数据：xiugai.yaml；由 scripts/sync_surge_family.py 自动生成。
 # 本文件为 Surge 外部 RULE-SET 匹配条件，不包含策略列。
 
+DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,claude.com
+DOMAIN-SUFFIX,claudeusercontent.com
+DOMAIN-SUFFIX,clau.de
 DOMAIN-SUFFIX,claude.app
 DOMAIN-SUFFIX,claude.site
 DOMAIN-SUFFIX,modelcontextprotocol.io
@@ -130,3 +135,5 @@ DOMAIN-SUFFIX,fal.media
 DOMAIN-SUFFIX,fal.run
 DOMAIN,grok.x.com
 DOMAIN-SUFFIX,grokipedia.com
+DOMAIN-SUFFIX,statsig.com
+DOMAIN-SUFFIX,sentry.io

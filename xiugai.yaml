@@ -146,9 +146,15 @@ rules:
 
   # ======== AIGC：海外 AI 服务显式走 AIGC 策略组（自动生成区块，勿手工混入其他规则） ========
   # 来源：各厂商官方 allowlist 文档 + GitHub 公开规则仓库（blackmatrix7/ios_rule_script、SukkaW ruleset 等），已 DNS 验证
-  # 与上游 Rabbit-Spec AIGC.list 已去重；上游已覆盖的域名（openai.com/anthropic.com/claude.ai/gemini/x.ai/perplexity.ai 等）不在此重复
+  # 核心域名一律显式收录（不再依赖上游 AIGC.list 顺序兜底，防止掉进 Proxy.list 兜底组）
   # 维护方式：直接改本区块，push 后 Actions 自动生成 surge/split/aigc.list 与 surge/generated/Rules/Dinyue-AIGC.list
-  # --- Anthropic ---
+  # --- Anthropic / Claude 核心（2026-10-22：显式纳入，修复 statsig.anthropic.com 被 skk reject 劫持走直连的泄漏）---
+  - {type: DOMAIN-SUFFIX, value: anthropic.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: claude.ai, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: claude.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: claudeusercontent.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: clau.de, policy: AIGC}
+  # --- Anthropic 边缘域名 ---
   - {type: DOMAIN-SUFFIX, value: claude.app, policy: AIGC}
   - {type: DOMAIN-SUFFIX, value: claude.site, policy: AIGC}
   - {type: DOMAIN-SUFFIX, value: modelcontextprotocol.io, policy: AIGC}
@@ -328,4 +334,7 @@ rules:
   # --- xAI ---
   - {type: DOMAIN, value: grok.x.com, policy: AIGC}
   - {type: DOMAIN-SUFFIX, value: grokipedia.com, policy: AIGC}
+  # --- AI 客户端遥测（2026-10-22：走 AIGC 代理隐藏真实 IP，避免直连暴露 AI 使用特征）---
+  - {type: DOMAIN-SUFFIX, value: statsig.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: sentry.io, policy: AIGC}
   # ======== AIGC 区块结束 ========
