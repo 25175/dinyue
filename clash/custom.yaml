@@ -3,6 +3,9 @@
 # 在 Clash/Mihomo 主配置中请使用 behavior: classical
 payload:
   - "DOMAIN,cc0cd.cc.cd,👋 手动选择"
+  - "DOMAIN-SUFFIX,browserleaks.com,👋 手动选择"
+  - "DOMAIN-SUFFIX,dnsleaktest.com,👋 手动选择"
+  - "DOMAIN-SUFFIX,ipleak.net,👋 手动选择"
   - "DOMAIN-SUFFIX,cc0cd.cc.cd,👋 手动选择"
   - "DOMAIN-KEYWORD,mtyy,DIRECT"
   - "DOMAIN-KEYWORD,mt,DIRECT"

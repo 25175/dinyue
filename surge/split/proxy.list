@@ -2,6 +2,9 @@
 # 源数据：xiugai.yaml；本文件只保留 Surge 外部 RULE-SET 兼容的匹配条件，不带策略列。
 
 DOMAIN,cc0cd.cc.cd
+DOMAIN-SUFFIX,browserleaks.com
+DOMAIN-SUFFIX,dnsleaktest.com
+DOMAIN-SUFFIX,ipleak.net
 DOMAIN-SUFFIX,cc0cd.cc.cd
 DOMAIN,netcut.cn
 DOMAIN,wenshushu.cn

@@ -4,6 +4,9 @@
 
 # policy: Proxy
 DOMAIN,cc0cd.cc.cd,Proxy
+DOMAIN-SUFFIX,browserleaks.com,Proxy
+DOMAIN-SUFFIX,dnsleaktest.com,Proxy
+DOMAIN-SUFFIX,ipleak.net,Proxy
 DOMAIN-SUFFIX,cc0cd.cc.cd,Proxy
 DOMAIN,netcut.cn,Proxy
 DOMAIN,wenshushu.cn,Proxy

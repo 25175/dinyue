@@ -8,6 +8,21 @@
     },
     {
       "type": "DOMAIN-SUFFIX",
+      "value": "browserleaks.com",
+      "outbound": "👋 手动选择"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "dnsleaktest.com",
+      "outbound": "👋 手动选择"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "ipleak.net",
+      "outbound": "👋 手动选择"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
       "value": "cc0cd.cc.cd",
       "outbound": "👋 手动选择"
     },

@@ -3,6 +3,9 @@
 # Clash/Mihomo 保留原 policy；Surge 会按 surge_policy_map 自动映射并拆分
 
 DOMAIN,cc0cd.cc.cd,👋 手动选择
+DOMAIN-SUFFIX,browserleaks.com,👋 手动选择
+DOMAIN-SUFFIX,dnsleaktest.com,👋 手动选择
+DOMAIN-SUFFIX,ipleak.net,👋 手动选择
 DOMAIN-SUFFIX,cc0cd.cc.cd,👋 手动选择
 DOMAIN-KEYWORD,mtyy,DIRECT
 DOMAIN-KEYWORD,mt,DIRECT
