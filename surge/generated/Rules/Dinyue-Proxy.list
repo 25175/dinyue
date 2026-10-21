@@ -3,6 +3,9 @@
 # 本文件为 Surge 外部 RULE-SET 匹配条件，不包含策略列。
 
 DOMAIN,cc0cd.cc.cd
+DOMAIN-SUFFIX,browserleaks.com
+DOMAIN-SUFFIX,dnsleaktest.com
+DOMAIN-SUFFIX,ipleak.net
 DOMAIN-SUFFIX,cc0cd.cc.cd
 DOMAIN,netcut.cn
 DOMAIN,wenshushu.cn

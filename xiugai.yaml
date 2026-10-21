@@ -75,6 +75,10 @@ surge_policy_map:
 rules:
 
   - {type: DOMAIN, value: cc0cd.cc.cd, policy: 👋 手动选择, comment: "Cloudflare Tunnel 主域名走代理（2026-07-26 由直连改，统一三端）"}
+  # --- 测泄漏/测速站点强制走代理（上游 China.list 把 browserleaks.com 误归国内→直连，导致测出的 IP/DNS 全是本地真实信息，2026-10-22）---
+  - {type: DOMAIN-SUFFIX, value: browserleaks.com, policy: 👋 手动选择}
+  - {type: DOMAIN-SUFFIX, value: dnsleaktest.com, policy: 👋 手动选择}
+  - {type: DOMAIN-SUFFIX, value: ipleak.net, policy: 👋 手动选择}
   - {type: DOMAIN-SUFFIX, value: cc0cd.cc.cd, policy: 👋 手动选择, comment: "Cloudflare Tunnel 子域名走代理（2026-07-26 由直连改，统一三端）"}
   - {type: DOMAIN-KEYWORD, value: mtyy, policy: DIRECT, comment: "mtyy 关键词直连；Clash/Mihomo classical 可用，Surge 需从 inline-rules.conf 复制到 [Rule] 靠前"}
   - {type: DOMAIN-KEYWORD, value: mt, policy: DIRECT}
