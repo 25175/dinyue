@@ -1,6 +1,11 @@
 # Surge split rules for policy: AIGC
 # 源数据：xiugai.yaml；本文件只保留 Surge 外部 RULE-SET 兼容的匹配条件，不带策略列。
 
+DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,claude.com
+DOMAIN-SUFFIX,claudeusercontent.com
+DOMAIN-SUFFIX,clau.de
 DOMAIN-SUFFIX,claude.app
 DOMAIN-SUFFIX,claude.site
 DOMAIN-SUFFIX,modelcontextprotocol.io
@@ -129,3 +134,5 @@ DOMAIN-SUFFIX,fal.media
 DOMAIN-SUFFIX,fal.run
 DOMAIN,grok.x.com
 DOMAIN-SUFFIX,grokipedia.com
+DOMAIN-SUFFIX,statsig.com
+DOMAIN-SUFFIX,sentry.io

@@ -370,6 +370,31 @@
     },
     {
       "type": "DOMAIN-SUFFIX",
+      "value": "anthropic.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "claude.ai",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "claude.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "claudeusercontent.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "clau.de",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
       "value": "claude.app",
       "outbound": "AIGC"
     },
@@ -1006,6 +1031,16 @@
     {
       "type": "DOMAIN-SUFFIX",
       "value": "grokipedia.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "statsig.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "sentry.io",
       "outbound": "AIGC"
     }
   ]

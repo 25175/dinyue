@@ -71,6 +71,11 @@ DOMAIN-KEYWORD,clipber,🎯 全球直连
 DOMAIN,hd.lz-cdn18.com,🎯 全球直连
 DOMAIN-KEYWORD,333ys.tv,🎯 全球直连
 DOMAIN-KEYWORD,afreecatv.com,👋 手动选择
+DOMAIN-SUFFIX,anthropic.com,AIGC
+DOMAIN-SUFFIX,claude.ai,AIGC
+DOMAIN-SUFFIX,claude.com,AIGC
+DOMAIN-SUFFIX,claudeusercontent.com,AIGC
+DOMAIN-SUFFIX,clau.de,AIGC
 DOMAIN-SUFFIX,claude.app,AIGC
 DOMAIN-SUFFIX,claude.site,AIGC
 DOMAIN-SUFFIX,modelcontextprotocol.io,AIGC
@@ -199,3 +204,5 @@ DOMAIN-SUFFIX,fal.media,AIGC
 DOMAIN-SUFFIX,fal.run,AIGC
 DOMAIN,grok.x.com,AIGC
 DOMAIN-SUFFIX,grokipedia.com,AIGC
+DOMAIN-SUFFIX,statsig.com,AIGC
+DOMAIN-SUFFIX,sentry.io,AIGC

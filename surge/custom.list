@@ -80,6 +80,11 @@ DOMAIN,wn1998.com,REJECT
 DOMAIN,pwlt.wn1998.com,REJECT
 
 # policy: AIGC
+DOMAIN-SUFFIX,anthropic.com,AIGC
+DOMAIN-SUFFIX,claude.ai,AIGC
+DOMAIN-SUFFIX,claude.com,AIGC
+DOMAIN-SUFFIX,claudeusercontent.com,AIGC
+DOMAIN-SUFFIX,clau.de,AIGC
 DOMAIN-SUFFIX,claude.app,AIGC
 DOMAIN-SUFFIX,claude.site,AIGC
 DOMAIN-SUFFIX,modelcontextprotocol.io,AIGC
@@ -208,3 +213,5 @@ DOMAIN-SUFFIX,fal.media,AIGC
 DOMAIN-SUFFIX,fal.run,AIGC
 DOMAIN,grok.x.com,AIGC
 DOMAIN-SUFFIX,grokipedia.com,AIGC
+DOMAIN-SUFFIX,statsig.com,AIGC
+DOMAIN-SUFFIX,sentry.io,AIGC
