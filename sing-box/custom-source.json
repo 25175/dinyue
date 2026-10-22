@@ -124,6 +124,36 @@
       "option": "no-resolve"
     },
     {
+      "type": "DOMAIN-SUFFIX",
+      "value": "getui.com",
+      "outbound": "DIRECT"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "getui.cn",
+      "outbound": "DIRECT"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "getui.net",
+      "outbound": "DIRECT"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "igexin.com",
+      "outbound": "DIRECT"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "jpush.cn",
+      "outbound": "DIRECT"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
+      "value": "jpush.io",
+      "outbound": "DIRECT"
+    },
+    {
       "type": "DOMAIN",
       "value": "www.hostbuf.com",
       "outbound": "REJECT"
