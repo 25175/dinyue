@@ -98,6 +98,13 @@ rules:
   - {type: IP-CIDR, value: 15.235.231.178/32, policy: DIRECT, option: no-resolve}
   - {type: IP-CIDR, value: 15.235.231.196/32, policy: DIRECT, option: no-resolve}
   - {type: IP-CIDR, value: 149.52.110.74/32, policy: DIRECT, option: no-resolve}
+  # --- 国内消息推送 SDK 白名单（reject 列表把推送全家 DNS 级拦截，导致国内 App 登录失败，2026-10-22）---
+  - {type: DOMAIN-SUFFIX, value: getui.com, policy: DIRECT}
+  - {type: DOMAIN-SUFFIX, value: getui.cn, policy: DIRECT}
+  - {type: DOMAIN-SUFFIX, value: getui.net, policy: DIRECT}
+  - {type: DOMAIN-SUFFIX, value: igexin.com, policy: DIRECT}
+  - {type: DOMAIN-SUFFIX, value: jpush.cn, policy: DIRECT}
+  - {type: DOMAIN-SUFFIX, value: jpush.io, policy: DIRECT}
   - {type: DOMAIN, value: www.hostbuf.com, policy: REJECT}
   - {type: DOMAIN, value: backup.www.hostbuf.com, policy: REJECT}
   - {type: DOMAIN, value: www.youtusoft.com, policy: REJECT}

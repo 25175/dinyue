@@ -15,6 +15,12 @@ IP-CIDR,15.235.228.46/32,no-resolve
 IP-CIDR,15.235.231.178/32,no-resolve
 IP-CIDR,15.235.231.196/32,no-resolve
 IP-CIDR,149.52.110.74/32,no-resolve
+DOMAIN-SUFFIX,getui.com
+DOMAIN-SUFFIX,getui.cn
+DOMAIN-SUFFIX,getui.net
+DOMAIN-SUFFIX,igexin.com
+DOMAIN-SUFFIX,jpush.cn
+DOMAIN-SUFFIX,jpush.io
 DOMAIN,agentseller.temu
 DOMAIN-KEYWORD,seller
 DOMAIN,agentseller.temu.com
