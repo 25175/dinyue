@@ -1075,6 +1075,11 @@
     },
     {
       "type": "DOMAIN-SUFFIX",
+      "value": "grok.com",
+      "outbound": "AIGC"
+    },
+    {
+      "type": "DOMAIN-SUFFIX",
       "value": "grokipedia.com",
       "outbound": "AIGC"
     },

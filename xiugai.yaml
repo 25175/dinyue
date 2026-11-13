@@ -344,6 +344,7 @@ rules:
   - {type: DOMAIN-SUFFIX, value: fal.run, policy: AIGC}
   # --- xAI ---
   - {type: DOMAIN, value: grok.x.com, policy: AIGC}
+  - {type: DOMAIN-SUFFIX, value: grok.com, policy: AIGC, comment: "Grok 网页版显式走 AIGC；blackmatrix7 的 X 列表也收了 grok.com，不显式写会被 X 策略组抢走（2026-11-13）"}
   - {type: DOMAIN-SUFFIX, value: grokipedia.com, policy: AIGC}
   # --- AI 客户端遥测（2026-10-22：走 AIGC 代理隐藏真实 IP，避免直连暴露 AI 使用特征）---
   - {type: DOMAIN-SUFFIX, value: statsig.com, policy: AIGC}

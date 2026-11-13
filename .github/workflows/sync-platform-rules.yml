@@ -1,0 +1,44 @@
+name: Sync platform rules (X/Reddit/Discord/Meta)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "37 */6 * * *"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/sync_platform_rules.py"
+      - ".github/workflows/sync-platform-rules.yml"
+      - "LICENSES/blackmatrix7-ios_rule_script-GPL-2.0.txt"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-platform-rules-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Sync and merge platform rule lists
+        run: python3 scripts/sync_platform_rules.py
+
+      - name: Verify generated artifacts
+        run: python3 scripts/sync_platform_rules.py --check
+
+      # generate-rules 与 sync-surge-family 常被同一次 push 同时触发，
+      # 推送前先并入对方已推送的提交，避免 non-fast-forward 失败。
+      - name: Rebase onto latest main
+        run: git pull --rebase --autostash origin main
+
+      - name: Commit updated platform rules
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "自动同步平台分流规则（X/Reddit/Discord/Meta，blackmatrix7 缝合）"
+          file_pattern: "surge/上游/ surge/generated/"

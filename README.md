@@ -36,6 +36,7 @@ xiugai.yaml
 .github/workflows/sync-surge-family.yml
 .github/workflows/sync-qx-adblock.yml
 .github/workflows/sync-wool-surge-module.yml
+.github/workflows/sync-platform-rules.yml
 ```
 
 自动流程：
@@ -45,8 +46,9 @@ xiugai.yaml
 3. 同步 Rabbit-Spec Surge Family 上游配置和规则
 4. 把 Dinyue 自定义规则插入到生成版 Surge Family 配置的上游规则前面
 5. 同步清洗版 QX 广告规则与 wool_scripts Surge 去广告模块
-6. 校验 YAML / JSON / Surge 拆分规则
-7. 自动提交生成结果到仓库
+6. 同步并缝合 X / Reddit / Discord / Meta 平台分流规则（上游 blackmatrix7/ios_rule_script）
+7. 校验 YAML / JSON / Surge 拆分规则
+8. 自动提交生成结果到仓库
 
 通常 10 秒到 2 分钟完成。完成后在 GitHub 的 Actions 页面会看到绿色成功状态。
 
@@ -87,7 +89,13 @@ python3 scripts/update_github.py -m "更新自定义规则"
 - `surge/split/proxy.list`：Surge 代理远程规则集
 - `surge/rule-set-lines.conf`：可复制到 Surge `[Rule]` 的远程 `RULE-SET` 行
 - `surge/inline-rules.conf`：少数不适合 Surge 外部规则集的内联规则，仅按需使用
+- `surge/上游/RocM301/Apple-AI.list`：RocM301 Apple Intelligence 原始上游备份
 - `surge/上游/Rabbit-Spec/`：Rabbit-Spec Surge Family 原始上游备份，包含原始配置和规则列表
+- `surge/上游/blackmatrix7/Rules/`：blackmatrix7/ios_rule_script 平台规则原始镜像备份（Twitter / Reddit / Discord / Facebook / Instagram / Whatsapp / Threads）
+- `surge/generated/Rules/X.list`：X（Twitter）平台缝合规则集，对应生成版配置里的 `X` 策略组
+- `surge/generated/Rules/Reddit.list`：Reddit 平台规则集，对应 `Reddit` 策略组
+- `surge/generated/Rules/Discord.list`：Discord 平台规则集，对应 `Discord` 策略组
+- `surge/generated/Rules/Meta.list`：Meta 系平台缝合规则集（Facebook + Instagram + WhatsApp + Threads 去重合并），对应 `Meta` 策略组
 - `surge/generated/Surge-Family.conf`：推荐给 Surge 使用的完整生成配置，已把 Dinyue 自定义规则放在 Rabbit 上游规则前面
 - `surge/generated/Rules/`：生成版 Surge Family 使用的规则集，包含上游镜像和 Dinyue 自定义规则集
 - `surge/generated/Dinyue-inline-rules.conf`：少数仍需手动内联的特殊规则
@@ -111,6 +119,10 @@ https://raw.githubusercontent.com/25175/dinyue/main/surge/split/reject.list
 https://raw.githubusercontent.com/25175/dinyue/main/surge/generated/Rules/Apple-AI.list
 https://raw.githubusercontent.com/25175/dinyue/main/surge/split/proxy.list
 https://raw.githubusercontent.com/25175/dinyue/main/surge/wool_scripts/blockAds.sgmodule
+https://raw.githubusercontent.com/25175/dinyue/main/surge/generated/Rules/X.list
+https://raw.githubusercontent.com/25175/dinyue/main/surge/generated/Rules/Reddit.list
+https://raw.githubusercontent.com/25175/dinyue/main/surge/generated/Rules/Discord.list
+https://raw.githubusercontent.com/25175/dinyue/main/surge/generated/Rules/Meta.list
 ```
 
 Surge 直接安装 wool_scripts 去广告合集（独立文件夹，清洗版，不影响自用音乐会员解锁）：
@@ -126,6 +138,17 @@ RULE-SET,https://raw.githubusercontent.com/25175/dinyue/main/surge/generated/Rul
 ```
 
 同步工作流每 6 小时运行一次，也会在相关源文件推送后立即更新。`Apple` 是生成版 Surge Family 中已有的策略组；如使用自己的 Surge 配置，请把最后的 `Apple` 改成实际策略组名称。
+
+X（Twitter）/ Reddit / Discord / Meta 平台分流规则由 `scripts/sync_platform_rules.py` 从 blackmatrix7/ios_rule_script 上游镜像并缝合（Meta 系四个平台合并去重），原始镜像备份在 `surge/上游/blackmatrix7/Rules/`。生成版 Surge Family 配置已内置 `X`、`Reddit`、`Discord`、`Meta` 四个策略组和对应 RULE-SET；如使用自己的 Surge 配置，可手动引用：
+
+```text
+RULE-SET,https://raw.githubusercontent.com/25175/dinyue/main/surge/generated/Rules/X.list,X,extended-matching
+RULE-SET,https://raw.githubusercontent.com/25175/dinyue/main/surge/generated/Rules/Reddit.list,Reddit,extended-matching
+RULE-SET,https://raw.githubusercontent.com/25175/dinyue/main/surge/generated/Rules/Discord.list,Discord,extended-matching
+RULE-SET,https://raw.githubusercontent.com/25175/dinyue/main/surge/generated/Rules/Meta.list,Meta,extended-matching
+```
+
+上游许可 GPL-2.0-or-later，全文见 `LICENSES/blackmatrix7-ios_rule_script-GPL-2.0.txt`。
 
 ## 六、规则类型兼容性说明
 
