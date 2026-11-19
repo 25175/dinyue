@@ -82,6 +82,11 @@
       "outbound": "DIRECT"
     },
     {
+      "type": "DOMAIN-SUFFIX",
+      "value": "day.app",
+      "outbound": "DIRECT"
+    },
+    {
       "type": "IP-CIDR",
       "value": "15.235.225.64/32",
       "outbound": "DIRECT",

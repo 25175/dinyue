@@ -27,6 +27,7 @@ DST-PORT,22,DIRECT
 DOMAIN,www.gstatic.com,DIRECT
 DOMAIN,cp.cloudflare.com,DIRECT
 DOMAIN,accel.ipflygates.com,DIRECT
+DOMAIN-SUFFIX,day.app,DIRECT
 IP-CIDR,15.235.225.64/32,DIRECT,no-resolve
 IP-CIDR,15.235.225.65/32,DIRECT,no-resolve
 IP-CIDR,15.235.225.66/32,DIRECT,no-resolve
