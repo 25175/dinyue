@@ -91,6 +91,8 @@ rules:
   - {type: DOMAIN, value: www.gstatic.com, policy: DIRECT}
   - {type: DOMAIN, value: cp.cloudflare.com, policy: DIRECT}
   - {type: DOMAIN, value: accel.ipflygates.com, policy: DIRECT}
+  # --- Bark 推送服务（api.day.app）必须直连：走代理会多绕一跳，且代理出口 IP 会被 Bark 服务端限流 ---
+  - {type: DOMAIN-SUFFIX, value: day.app, policy: DIRECT, comment: "Bark 推送：2026-11-19 定，直连才稳定，勿改回代理"}
   - {type: IP-CIDR, value: 15.235.225.64/32, policy: DIRECT, option: no-resolve}
   - {type: IP-CIDR, value: 15.235.225.65/32, policy: DIRECT, option: no-resolve}
   - {type: IP-CIDR, value: 15.235.225.66/32, policy: DIRECT, option: no-resolve}
